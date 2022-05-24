@@ -14,6 +14,7 @@ import {MatSelectModule} from "@angular/material/select";
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     LoginComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
