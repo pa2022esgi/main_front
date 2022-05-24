@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
     LoginFormComponent,
     RegisterFormComponent,
     NavbarComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
     MatButtonModule,
     MatSelectModule,
     AppRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
