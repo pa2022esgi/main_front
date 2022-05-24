@@ -11,13 +11,17 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
+import { AppRoutingModule } from './app-routing.module';
+import { NavbarComponent } from './components/navbar/navbar/navbar.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    AppRoutingModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
