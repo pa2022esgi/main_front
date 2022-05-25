@@ -17,6 +17,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatSelectModule,
     AppRoutingModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
