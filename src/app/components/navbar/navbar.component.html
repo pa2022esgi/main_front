@@ -7,6 +7,9 @@
     <a mat-button routerLink="/">Accueil</a>
     <a mat-button routerLink="/cours">Cours</a>
     <a mat-button routerLink="/">Blog</a>
-    <a mat-button routerLink="/login">Se connecter</a>
+    <a mat-button routerLink="/login" *ngIf="!authService.user; else isLogged">Se connecter</a>
+    <ng-template #isLogged>
+      <a mat-button routerLink="/">Mon compte</a>
+    </ng-template>
   </mat-toolbar-row>
 </mat-toolbar>

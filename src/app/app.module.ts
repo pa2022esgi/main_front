@@ -19,6 +19,7 @@ import { TeacherCardComponent } from './components/teacher-card/teacher-card.com
 import {MatIconModule} from "@angular/material/icon";
 import { FootComponent } from './components/foot/foot.component';
 import { CoursComponent } from './pages/cours/cours.component';
+import {AuthService} from "./services/auth/auth.service";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { CoursComponent } from './pages/cours/cours.component';
     MatToolbarModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
