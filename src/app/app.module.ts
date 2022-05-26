@@ -15,6 +15,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { TeacherCardComponent } from './components/teacher-card/teacher-card.component';
+import {MatIconModule} from "@angular/material/icon";
+import { FootComponent } from './components/foot/foot.component';
+import { CoursComponent } from './pages/cours/cours.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     LoginFormComponent,
     RegisterFormComponent,
     NavbarComponent,
-    HomepageComponent
+    HomepageComponent,
+    TeacherCardComponent,
+    FootComponent,
+    CoursComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,8 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     MatButtonModule,
     MatSelectModule,
     AppRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
