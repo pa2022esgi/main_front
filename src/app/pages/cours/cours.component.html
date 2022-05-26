@@ -1,0 +1,41 @@
+<div class="page-cours">
+  <div class="filter">
+    <span class="titre">Trier par:</span>
+    <span class="kkk">Proche de chez yous</span>
+    <span class="kkk">Tarif</span>
+    <span class="kkk">Avis</span>
+
+    <div class="reinit">
+      <button mat-icon-button aria-label="">
+        <mat-icon>autorenew</mat-icon>
+      </button>
+      <span>Réinitialiser</span>
+    </div>
+  </div>
+
+  <div class="input-wrap">
+    <input type="text" placeholder="Rechercher un cours, un prof..." class="recherche">
+    <button mat-icon-button aria-label="">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <div class="input-wrap">
+    <mat-select [(value)]="selected" placeholder="---selected---" class="search">
+      <mat-option value="Visioconference">Visioconference</mat-option>
+      <mat-option value="123">123</mat-option>
+    </mat-select>
+    <input type="text">
+  </div>
+
+  <b><div [ngClass]="{'num': num}" ><p>{{num}} cours trouves:</p></div></b>
+
+  <div class="card-list" style="width: 1024px;margin: 16px auto 0;display: flex;justify-content: space-between;">
+    <app-teacher-card></app-teacher-card>
+    <app-teacher-card></app-teacher-card>
+    <app-teacher-card></app-teacher-card>
+    <app-teacher-card></app-teacher-card>
+    <app-teacher-card></app-teacher-card>
+    <app-teacher-card></app-teacher-card>
+    <app-teacher-card></app-teacher-card>
+  </div>
+</div>
