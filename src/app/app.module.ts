@@ -20,6 +20,9 @@ import {MatIconModule} from "@angular/material/icon";
 import { FootComponent } from './components/foot/foot.component';
 import { CoursComponent } from './pages/cours/cours.component';
 import {AuthService} from "./services/auth/auth.service";
+import {MatMenuModule} from "@angular/material/menu";
+import { TeacherMenuComponent } from './components/teacher-menu/teacher-menu.component';
+import { StudentMenuComponent } from './components/student-menu/student-menu.component';
 
 @NgModule({
   declarations: [
@@ -31,20 +34,23 @@ import {AuthService} from "./services/auth/auth.service";
     HomepageComponent,
     TeacherCardComponent,
     FootComponent,
-    CoursComponent
+    CoursComponent,
+    TeacherMenuComponent,
+    StudentMenuComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatMenuModule
+    ],
   providers: [AuthService],
   bootstrap: [AppComponent]
 })
