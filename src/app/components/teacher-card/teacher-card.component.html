@@ -1,6 +1,7 @@
 <mat-card class="card">
   <mat-card-content>
-    <div>35€/h</div>
+    <div>{{ 35 | currency:'EUR':'symbol' | uppercase}} / h
+    </div>
     <mat-icon aria-hidden="false" aria-label="vision">videocam</mat-icon>
   </mat-card-content>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
