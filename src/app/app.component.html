@@ -1,3 +1,7 @@
 <app-navbar *ngIf="!admin"></app-navbar>
-<app-sidenav *ngIf="admin"></app-sidenav>
-<router-outlet></router-outlet>
+<mat-drawer-container class="example-container">
+  <mat-drawer *ngIf="admin" mode="side" opened>
+    <app-sidenav-content></app-sidenav-content>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>

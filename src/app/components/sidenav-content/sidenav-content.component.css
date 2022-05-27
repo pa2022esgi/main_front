@@ -1,0 +1,7 @@
+.mat-nav-list{
+  padding: 10px;
+}
+
+mat-list-item{
+  border: 1px solid grey;
+}

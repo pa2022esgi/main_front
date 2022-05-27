@@ -15,9 +15,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from "@angular/material/icon";
+import {MatDividerModule} from "@angular/material/divider";
+import { SidenavContentComponent } from './components/sidenav-content/sidenav-content.component';
+import {MatListModule} from "@angular/material/list";
+import { UsersComponent } from './pages/users/users.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -27,7 +32,9 @@ import {MatIconModule} from "@angular/material/icon";
     RegisterFormComponent,
     NavbarComponent,
     AdminHomeComponent,
-    SidenavComponent
+    SidenavContentComponent,
+    UsersComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,10 @@ import {MatIconModule} from "@angular/material/icon";
     AppRoutingModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatDividerModule,
+    MatListModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
