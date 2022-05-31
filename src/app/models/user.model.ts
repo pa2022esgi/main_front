@@ -1,4 +1,4 @@
-const userSchema = new Schema({
+/*const userSchema = new Schema({
   login: {
     type: Schema.Types.String,
     required: true,
@@ -26,4 +26,4 @@ const userSchema = new Schema({
   collection: "users",
   timestamps: true,
   versionKey: false
-});
+});*/

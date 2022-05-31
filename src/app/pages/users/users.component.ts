@@ -30,7 +30,7 @@ export class UsersComponent implements OnInit {
     }
   ];
 
-  headers:string[] = ["id","firstname","lastname","type","age"];
+  headers:string[] = ["id","firstname","lastname","type","age","actions"];
   constructor() {
   }
 
