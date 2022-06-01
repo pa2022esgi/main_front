@@ -24,6 +24,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatMenuModule} from "@angular/material/menu";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {MatMenuModule} from "@angular/material/menu";
     MatDividerModule,
     MatListModule,
     MatTableModule,
-    MatMenuModule
+    MatMenuModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

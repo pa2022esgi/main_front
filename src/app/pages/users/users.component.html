@@ -5,6 +5,13 @@ Pagination
 <div class="users_div">
   <button mat-raised-button class="add_user_button">Ajouter un utilisateur</button><br>
 
+  <mat-paginator [length]="100"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 aria-label="Select page"
+                 class="users_paginators">
+  </mat-paginator>
+
   <table mat-table [dataSource]="users_list" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
@@ -48,5 +55,6 @@ Pagination
     <tr mat-header-row *matHeaderRowDef="headers"></tr>
     <tr mat-row *matRowDef="let row; columns: headers;"></tr>
   </table>
+
 </div>
 
