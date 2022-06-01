@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +24,8 @@ import {AuthService} from "./services/auth/auth.service";
 import {MatMenuModule} from "@angular/material/menu";
 import { TeacherMenuComponent } from './components/teacher-menu/teacher-menu.component';
 import { StudentMenuComponent } from './components/student-menu/student-menu.component';
+import {FormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { StudentMenuComponent } from './components/student-menu/student-menu.com
   ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         BrowserAnimationsModule,
         MatCardModule,
         MatFormFieldModule,
@@ -49,7 +53,8 @@ import { StudentMenuComponent } from './components/student-menu/student-menu.com
         AppRoutingModule,
         MatToolbarModule,
         MatIconModule,
-        MatMenuModule
+        MatMenuModule,
+        FormsModule
     ],
   providers: [AuthService],
   bootstrap: [AppComponent]
