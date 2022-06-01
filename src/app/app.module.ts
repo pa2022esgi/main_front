@@ -25,6 +25,8 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import {MatTableModule} from "@angular/material/table";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { UserModifyComponent } from './pages/user-modify/user-modify.component';
+import { UserCreateComponent } from './pages/user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     AdminHomeComponent,
     SidenavContentComponent,
     UsersComponent,
-    UsersListComponent
+    UsersListComponent,
+    UserModifyComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,
