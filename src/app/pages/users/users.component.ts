@@ -27,7 +27,68 @@ export class UsersComponent implements OnInit {
       lastname:"An",
       type:"teacher",
       age:26,
-    }
+    },
+    {
+      id:0,
+      firstname:"Charles",
+      lastname:"Cretois",
+      type:"admin",
+      age:21,
+    },
+    {
+      id:1,
+      firstname:"Pierre",
+      lastname:"Bonamy",
+      type:"student",
+      age:22,
+    },
+    {
+      id:2,
+      firstname:"TianQi",
+      lastname:"An",
+      type:"teacher",
+      age:26,
+    },    {
+      id:0,
+      firstname:"Charles",
+      lastname:"Cretois",
+      type:"admin",
+      age:21,
+    },
+    {
+      id:1,
+      firstname:"Pierre",
+      lastname:"Bonamy",
+      type:"student",
+      age:22,
+    },
+    {
+      id:2,
+      firstname:"TianQi",
+      lastname:"An",
+      type:"teacher",
+      age:26,
+    },    {
+      id:0,
+      firstname:"Charles",
+      lastname:"Cretois",
+      type:"admin",
+      age:21,
+    },
+    {
+      id:1,
+      firstname:"Pierre",
+      lastname:"Bonamy",
+      type:"student",
+      age:22,
+    },
+    {
+      id:2,
+      firstname:"TianQi",
+      lastname:"An",
+      type:"teacher",
+      age:26,
+    },
   ];
 
   headers:string[] = ["id","firstname","lastname","type","age","actions"];
