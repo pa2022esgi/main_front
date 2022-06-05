@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +15,17 @@ import {MatSelectModule} from "@angular/material/select";
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { TeacherCardComponent } from './components/teacher-card/teacher-card.component';
+import {MatIconModule} from "@angular/material/icon";
+import { FootComponent } from './components/foot/foot.component';
+import { CoursComponent } from './pages/cours/cours.component';
+import {AuthService} from "./services/auth/auth.service";
+import {MatMenuModule} from "@angular/material/menu";
+import { TeacherMenuComponent } from './components/teacher-menu/teacher-menu.component';
+import { StudentMenuComponent } from './components/student-menu/student-menu.component';
+import {FormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -21,20 +33,30 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     LoginComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomepageComponent,
+    TeacherCardComponent,
+    FootComponent,
+    CoursComponent,
+    TeacherMenuComponent,
+    StudentMenuComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    AppRoutingModule,
-    MatToolbarModule
-  ],
-  providers: [],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatMenuModule,
+        FormsModule
+    ],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
