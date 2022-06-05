@@ -25,6 +25,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import { TeacherMenuComponent } from './components/teacher-menu/teacher-menu.component';
 import { StudentMenuComponent } from './components/student-menu/student-menu.component';
 import {FormsModule} from "@angular/forms";
+import {SwiperModule} from "swiper/angular";
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {FormsModule} from "@angular/forms";
         MatToolbarModule,
         MatIconModule,
         MatMenuModule,
-        FormsModule
+        FormsModule,
+        SwiperModule
     ],
   providers: [AuthService],
   bootstrap: [AppComponent]

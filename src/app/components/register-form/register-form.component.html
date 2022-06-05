@@ -2,24 +2,24 @@
   <h2>INSCRIPTION</h2>
   <mat-form-field appearance="fill">
     <mat-label>s'inscrire en tant que...</mat-label>
-    <mat-select>
+    <mat-select [ngModel]="role">
       <mat-option value="Elève">Elève</mat-option>
       <mat-option value="Professeur">Professeur</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-card-content>
     <form class="my-form">
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" [ngClass]="{ 'has-error': invalidEmail() }">
         <mat-label>email</mat-label>
-        <input matInput placeholder="Email" name="email" />
+        <input matInput placeholder="Email" name="email" [ngModel]="email"/>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" [ngClass]="{ 'has-error': invalidPassword() }">
         <mat-label>mot de passe</mat-label>
-        <input matInput placeholder="Password" name="password" />
+        <input matInput placeholder="Password" name="password" [ngModel]="password"/>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" [ngClass]="{ 'has-error': invalidConfirmPassword() || differentPassword() }">
         <mat-label>confirmation du mot de passe</mat-label>
-        <input matInput placeholder="Password" name="password" />
+        <input matInput placeholder="Password" name="password" [ngModel]="confirmpassword"/>
       </mat-form-field>
     </form>
   </mat-card-content>

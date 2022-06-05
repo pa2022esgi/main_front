@@ -4,6 +4,8 @@ export enum UserRole {
 }
 
 export class User {
-  //role?: UserRole;
-  role = UserRole.Teacher;
+  email?: string;
+  password?: string;
+  role?: UserRole;
+  //role?: UserRole.Teacher;
 }

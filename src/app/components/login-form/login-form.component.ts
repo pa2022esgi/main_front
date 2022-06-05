@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
 import {User} from "../../services/auth/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-form',
@@ -11,7 +12,7 @@ import {User} from "../../services/auth/user";
 export class LoginFormComponent implements OnInit {
   public user: User;
 
-  constructor(private authService : AuthService) {
+  constructor(private authService : AuthService, private router : Router) {
     this.user = new User();
   }
 
@@ -25,6 +26,7 @@ export class LoginFormComponent implements OnInit {
     if(this.user?.email && this.user?.password) {
       this.authService.get(this.user).subscribe(result => {
         this.authService.user={role : 0};
+        this.router.navigate(['']);
         console.log('result is ', result);
       }, error => {
         console.log('error is ', error);

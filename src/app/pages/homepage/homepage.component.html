@@ -6,23 +6,35 @@
   </div>
 </div>
 
-<div style="width: 1024px;margin: 16px auto 0;display: flex;justify-content: space-between;">
+<swiper [config]="config">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <app-teacher-card></app-teacher-card>
+      ok
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</swiper>
+
+<!-- <div style="width: 1024px;margin: 16px auto 0;display: flex;justify-content: space-between;">
   <app-teacher-card></app-teacher-card>
   <app-teacher-card></app-teacher-card>
   <app-teacher-card></app-teacher-card>
-</div>
+</div> -->
 
 <div class="select-wrap">
   <div class="select">
     <h3>Devenir Etudiant</h3>
     <p>Lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod temporncididunt ut labore et dolore magna aliquaUt enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquidex ea commodo consequat, Duis aute iruredolor in reprehenderit in voluptate</p>
-    <button class="btn1">S'INSCRIRE</button>
+    <button mat-button class="btn1">S'INSCRIRE</button>
   </div>
   <div class="line"></div>
   <div class="select">
     <h3>Devenir Etudiant</h3>
     <p>Lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod temporncididunt ut labore et dolore magna aliquaUt enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquidex ea commodo consequat, Duis aute iruredolor in reprehenderit in voluptate</p>
-    <button class="btn2">S'INSCRIRE</button>
+    <button mat-button class="btn2">S'INSCRIRE</button>
   </div>
 </div>
 

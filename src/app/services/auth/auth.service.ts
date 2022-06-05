@@ -9,16 +9,25 @@ import { Observable} from "rxjs";
 })
 export class AuthService {
 
-  URL = "http://localhost:3000/auth/login";
+  URL_LOGIN= "http://localhost:3000/auth/login";
+  URL_REGISTER= "http://localhost:3000/auth/register"
 
   user: User | undefined;
 
   constructor(private http: HttpClient) { }
 
   get(user: User): Observable<any>{
-    return this.http.post(this.URL,{
+    return this.http.post(this.URL_LOGIN,{
       "login": user.email,
       "password": user.password
+    });
+  }
+
+  register(user: User){
+    return this.http.post(this.URL_REGISTER,{
+      "login": user.email,
+      "password": user.password,
+      "role": user.role
     });
   }
 
