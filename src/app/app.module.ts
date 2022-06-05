@@ -27,6 +27,9 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { UserModifyComponent } from './pages/user-modify/user-modify.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { UserSearchComponent } from './components/user-search/user-search.component';
+import { AddUserButtonComponent } from './components/add-user-button/add-user-button.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { UserCreateComponent } from './pages/user-create/user-create.component';
     UsersComponent,
     UsersListComponent,
     UserModifyComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    PaginatorComponent,
+    UserSearchComponent,
+    AddUserButtonComponent
   ],
   imports: [
     BrowserModule,

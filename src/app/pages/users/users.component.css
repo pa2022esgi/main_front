@@ -3,23 +3,8 @@
   margin: auto;
 }
 
-.add_user_button{
-  float: right;
-  margin-right: 0px;
-  margin-bottom: 15px;
-}
-
 .users_div{
   width: 70%;
   margin: auto;
   margin-top: 40px;
-}
-
-.users_paginators{
-  background-color: #ececec;
-  border: 1px solid #bdbdbd;
-}
-
-.example-full-width{
-  width: 80%;
 }

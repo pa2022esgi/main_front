@@ -1,22 +1,9 @@
-Bouttons action<br>
-Barre de recherche<br>
-Pagination
-
 <div class="users_div">
 
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Recherche :</mat-label>
-    <input matInput type="search" placeholder="Nom, Prénom, email, age, etc..">
-  </mat-form-field>
+  <app-user-search></app-user-search>
+  <app-add-user-button></app-add-user-button><br>
 
-  <button mat-raised-button class="add_user_button" [routerLink]="['create']">Ajouter un utilisateur</button><br>
-
-  <mat-paginator [length]="100"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]"
-                 aria-label="Select page"
-                 class="users_paginators">
-  </mat-paginator>
+  <app-paginator></app-paginator>
 
   <table mat-table [dataSource]="users_list" class="mat-elevation-z8">
 
@@ -62,11 +49,6 @@ Pagination
     <tr mat-header-row *matHeaderRowDef="headers"></tr>
     <tr mat-row *matRowDef="let row; columns: headers;"></tr>
   </table>
-  <mat-paginator [length]="100"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]"
-                 aria-label="Select page"
-                 class="users_paginators">
-  </mat-paginator>
+  <app-paginator></app-paginator>
 </div>
 
