@@ -25,11 +25,10 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import {MatTableModule} from "@angular/material/table";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import { UserModifyComponent } from './pages/user-modify/user-modify.component';
-import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
 import { AddUserButtonComponent } from './components/add-user-button/add-user-button.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -42,8 +41,6 @@ import { AddUserButtonComponent } from './components/add-user-button/add-user-bu
     SidenavContentComponent,
     UsersComponent,
     UsersListComponent,
-    UserModifyComponent,
-    UserCreateComponent,
     PaginatorComponent,
     UserSearchComponent,
     AddUserButtonComponent
@@ -64,7 +61,8 @@ import { AddUserButtonComponent } from './components/add-user-button/add-user-bu
     MatListModule,
     MatTableModule,
     MatMenuModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

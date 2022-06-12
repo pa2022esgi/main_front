@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  @Input() users_list:{id:number,firstname:string, lastname:string, type:string, age:number}[] = [
+  users_list:{id:number,firstname:string, lastname:string, type:string, age:number}[] = [
     {
       id:0,
       firstname:"Charles",

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../../user-service.service";
 
 @Component({
   selector: 'app-add-user-button',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUserButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+  }
+
+  createNewUser(){
+    this.userService.createUser("Test","Test","Test","Test","Test",4567).subscribe((response:any) =>{
+      console.log(response);
+    });
   }
 
 }
