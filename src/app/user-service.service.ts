@@ -10,4 +10,8 @@ export class UserService{
   createUser(name:string,type:string,login:string,password:string,address:string,phone:number){
     return this.webReqService.post("users",{ name,type,login,password,address,phone }); //
   }
+
+  getAllUsers(){
+    return this.webReqService.get("users");
+  }
 }

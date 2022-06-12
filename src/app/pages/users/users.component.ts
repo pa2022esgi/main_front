@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {UserService} from "../../user-service.service";
 
 @Component({
   selector: 'app-users',
@@ -6,96 +7,27 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  users_list:{id:number,firstname:string, lastname:string, type:string, age:number}[] = [
+
+  constructor(private userService:UserService) {
+  }
+
+  users_list:{name:string,login:string, type:string, address:string, phone:number}[] = [
     {
-      id:0,
-      firstname:"Charles",
-      lastname:"Cretois",
+      name:"Charles",
+      login:"ccretois",
       type:"admin",
-      age:21,
-    },
-    {
-      id:1,
-      firstname:"Pierre",
-      lastname:"Bonamy",
-      type:"student",
-      age:22,
-    },
-    {
-      id:2,
-      firstname:"TianQi",
-      lastname:"An",
-      type:"teacher",
-      age:26,
-    },
-    {
-      id:0,
-      firstname:"Charles",
-      lastname:"Cretois",
-      type:"admin",
-      age:21,
-    },
-    {
-      id:1,
-      firstname:"Pierre",
-      lastname:"Bonamy",
-      type:"student",
-      age:22,
-    },
-    {
-      id:2,
-      firstname:"TianQi",
-      lastname:"An",
-      type:"teacher",
-      age:26,
-    },    {
-      id:0,
-      firstname:"Charles",
-      lastname:"Cretois",
-      type:"admin",
-      age:21,
-    },
-    {
-      id:1,
-      firstname:"Pierre",
-      lastname:"Bonamy",
-      type:"student",
-      age:22,
-    },
-    {
-      id:2,
-      firstname:"TianQi",
-      lastname:"An",
-      type:"teacher",
-      age:26,
-    },    {
-      id:0,
-      firstname:"Charles",
-      lastname:"Cretois",
-      type:"admin",
-      age:21,
-    },
-    {
-      id:1,
-      firstname:"Pierre",
-      lastname:"Bonamy",
-      type:"student",
-      age:22,
-    },
-    {
-      id:2,
-      firstname:"TianQi",
-      lastname:"An",
-      type:"teacher",
-      age:26,
+      address:"Test",
+      phone:21641419498,
     },
   ];
 
-  headers:string[] = ["id","firstname","lastname","type","age","actions"];
-  constructor() {
-  }
 
-  ngOnInit(): void {
+  headers:string[] = ["name","login","type","address","phone","actions"];
+
+  ngOnInit(){
+    this.userService.getAllUsers().subscribe((users:any) =>{
+      this.users_list = users;
+    });
   }
 
 }
