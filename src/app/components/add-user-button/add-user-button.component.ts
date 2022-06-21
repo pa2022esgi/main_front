@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {UserService} from "../../user-service.service";
 
 @Component({
@@ -10,12 +10,15 @@ export class AddUserButtonComponent implements OnInit {
 
   constructor(private userService:UserService) { }
 
+  @Output() userListEvent = new EventEmitter<string>();
+
   ngOnInit(): void {
   }
 
   createNewUser(){
-    this.userService.createUser("Test","Test","Test","Test","Test",4567).subscribe((response:any) =>{
+    this.userService.createUser("0","0","test17","0","0",6986498).subscribe((response:any) =>{
       console.log(response);
+      this.userListEvent.emit(response);
     });
   }
 

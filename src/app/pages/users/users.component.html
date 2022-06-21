@@ -1,7 +1,7 @@
 <div class="users_div">
 
   <app-user-search></app-user-search>
-  <app-add-user-button></app-add-user-button><br>
+  <app-add-user-button (userListEvent)="getAllUsers()"></app-add-user-button><br>
 
   <table mat-table [dataSource]="users_list" class="mat-elevation-z8">
 
