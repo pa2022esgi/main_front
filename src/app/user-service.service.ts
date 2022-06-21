@@ -15,7 +15,7 @@ export class UserService{
     return this.webReqService.get("users");
   }
 
-  deleteUserByID(id:number){
+  deleteUserByID(id:string){
     return this.webReqService.delete("users/"+id);
   }
 }

@@ -39,7 +39,7 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item *ngIf="element.type==='teacher'">Voir les fichiers du professeur</button>
           <button mat-menu-item [routerLink]="['modify_id']">Modifier</button>
-          <button mat-menu-item>Supprimer</button>
+          <button mat-menu-item (click)="deleteUser(element._id)" >Supprimer</button>
         </mat-menu>
       </td>
     </ng-container>

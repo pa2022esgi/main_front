@@ -11,7 +11,7 @@ export class UsersComponent implements OnInit {
   constructor(private userService:UserService) {
   }
 
-  users_list:{name:string,login:string, type:string, address:string, phone:number}[] = [];
+  users_list:{name:string,login:string, type:string, address:string, phone:number, id:string}[] = [];
 
   headers:string[] = ["name","login","type","address","phone","actions"];
 
@@ -22,11 +22,14 @@ export class UsersComponent implements OnInit {
   getAllUsers(){
     this.userService.getAllUsers().subscribe((users:any) =>{
       this.users_list = users;
+      console.log(users);
     });
   }
 
-  testFunction(text:string){
-    console.log(text);
+  deleteUser(id:string){
+    this.userService.deleteUserByID(id).subscribe(() => {
+      this.getAllUsers();
+    });
   }
 
 }
