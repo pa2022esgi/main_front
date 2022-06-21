@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from "@angular/common/http";
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
@@ -17,14 +15,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import { SidenavContentComponent } from './components/sidenav-content/sidenav-content.component';
 import {MatListModule} from "@angular/material/list";
 import { UsersComponent } from './pages/users/users.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import {MatTableModule} from "@angular/material/table";
-import {MatMenuModule} from "@angular/material/menu";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { UserSearchComponent } from './components/user-search/user-search.component';
@@ -55,7 +51,7 @@ import {FormsModule} from "@angular/forms";
     UsersListComponent,
     PaginatorComponent,
     UserSearchComponent,
-    AddUserButtonComponent
+    AddUserButtonComponent,
     NavbarComponent,
     HomepageComponent,
     TeacherCardComponent,
@@ -77,28 +73,15 @@ import {FormsModule} from "@angular/forms";
         MatToolbarModule,
         MatIconModule,
         MatMenuModule,
-        FormsModule
+        FormsModule,
+        MatSidenavModule,
+        MatDividerModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        HttpClientModule
     ],
   providers: [AuthService],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatDividerModule,
-    MatListModule,
-    MatTableModule,
-    MatMenuModule,
-    MatPaginatorModule,
-    HttpClientModule
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
