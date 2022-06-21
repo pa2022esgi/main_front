@@ -3,32 +3,34 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "./user";
 import { Observable} from "rxjs";
 
+const URL= "http://localhost:3000/auth/";
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-
-  URL_LOGIN= "http://localhost:3000/auth/login";
-  URL_REGISTER= "http://localhost:3000/auth/register"
-
-  user: User | undefined;
+export class AuthService{
 
   constructor(private http: HttpClient) { }
 
   get(user: User): Observable<any>{
-    return this.http.post(this.URL_LOGIN,{
-      "login": user.email,
-      "password": user.password
-    });
+    return this.http.post(URL + 'login',{
+      "login" : user.email,
+      "password" : user.password
+    }, httpOptions);
   }
 
-  register(user: User){
-    return this.http.post(this.URL_REGISTER,{
+
+  register(user: User): Observable<any>{
+    console.log(user);
+    return this.http.post(URL + 'register',{
       "login": user.email,
       "password": user.password,
       "role": user.role
-    });
+    }, httpOptions);
   }
 
 }

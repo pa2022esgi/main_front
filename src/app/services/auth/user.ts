@@ -1,11 +1,23 @@
 export enum UserRole {
-  Teacher,
-  Student
+  Teacher=1,
+  Student=2
 }
 
-export class User {
-  email?: string;
-  password?: string;
-  role?: UserRole;
-  //role?: UserRole.Teacher;
+export class User implements UserProps{
+  email: string;
+  password: string;
+  role: UserRole;
+
+  constructor(props : UserProps) {
+    this.email = props.email;
+    this.password = props.password;
+    this.role = props.role;
+  }
+
+}
+
+export interface UserProps {
+  email: string;
+  password: string;
+  role: UserRole;
 }
