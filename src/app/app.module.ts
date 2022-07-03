@@ -37,6 +37,7 @@ import { TeacherMenuComponent } from './components/teacher-menu/teacher-menu.com
 import { StudentMenuComponent } from './components/student-menu/student-menu.component';
 import {FormsModule} from "@angular/forms";
 import {SwiperModule} from "swiper/angular";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import {SwiperModule} from "swiper/angular";
         MatTableModule,
         MatPaginatorModule,
         HttpClientModule,
-        SwiperModule
+        SwiperModule,
+        MatGridListModule
     ],
   providers: [AuthService],
   bootstrap: [AppComponent]

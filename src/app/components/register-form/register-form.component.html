@@ -1,31 +1,31 @@
 <mat-card class="my-card">
-  <h2>INSCRIPTION</h2>
-  <mat-form-field appearance="fill">
-    <mat-label>s'inscrire en tant que...</mat-label>
-    <mat-select [(ngModel)]="role">
-      <mat-option value="2">Elève</mat-option>
-      <mat-option value="1">Professeur</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-card-content>
-    <form class="my-form">
-      <mat-form-field class="full-width" >
-        <mat-label>email</mat-label>
-        <input matInput placeholder="Email" name="email" [(ngModel)]="email"/>
+  <mat-card-title><h3>INSCRIPTION</h3></mat-card-title>
+  <mat-card-content style="display: flex; align-items: center;">
+    <form class="my-form" style="width: 100vw;">
+      <mat-form-field appearance="fill">
+        <mat-label>S'inscrire en tant que...</mat-label>
+        <mat-select [(ngModel)]="role">
+          <mat-option value="2">Elève</mat-option>
+          <mat-option value="1">Professeur</mat-option>
+        </mat-select>
       </mat-form-field>
-      <mat-form-field class="full-width" >
-        <mat-label>mot de passe</mat-label>
-        <input matInput placeholder="Password" name="password" [(ngModel)]="password"/>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput name="email" [(ngModel)]="email" />
       </mat-form-field>
-      <mat-form-field class="full-width" >
-        <mat-label>confirmation du mot de passe</mat-label>
-        <input matInput placeholder="Password" name="password" [(ngModel)]="confirmpassword"/>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput name="password" [(ngModel)]="password" />
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Confirmation du mot de passe</mat-label>
+        <input matInput name="password" [(ngModel)]="confirmpassword" />
       </mat-form-field>
     </form>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-footer style="margin-bottom: 25px;">
     <button mat-raised-button (click)="register()" color="primary">
       S'inscrire
     </button>
-  </mat-card-actions>
+  </mat-card-footer>
 </mat-card>

@@ -1,5 +1,5 @@
 <app-navbar *ngIf="!admin"></app-navbar>
-<mat-drawer-container class="example-container">
+<mat-drawer-container autosize>
   <mat-drawer *ngIf="admin" mode="side" opened>
     <app-sidenav-content></app-sidenav-content>
   </mat-drawer>

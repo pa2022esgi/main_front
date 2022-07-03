@@ -21,7 +21,7 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit(): void {}
 
   register(): void {
-        this.user = {'email': this.email, 'password': this.password, 'role': this.role};
+        this.user = {'email': this.email, 'password': this.password, 'type': this.role};
         console.log(this.user);
         this.authService.register(this.user).subscribe(
           result => {console.log('result is ', result);},
