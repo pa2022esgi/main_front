@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRole } from 'src/app/models/user.model';
+import { User, UserRole } from 'src/app/models/user.model';
 import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
@@ -8,8 +8,6 @@ import {AuthService} from "../../services/auth/auth.service";
   styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent implements OnInit {
-
-  user : any = {};
 
   email: string | null = null;
   password: string | null = null;
@@ -40,10 +38,21 @@ export class RegisterFormComponent implements OnInit {
     }
 
     if (!this.error) {
-      this.user = {'email': this.email, 'password': this.password, 'role': this.role};
-      this.authService.register(this.user).subscribe({
-        next: (res) => {console.log('result is ', res);},
-        error: (err) => {this.error = "Une erreur est survenue";}
+      this.authService.register({"email": this.email, "role": this.role, "password": this.password}).subscribe({
+        next: (res: any) => {
+          const user = new User({
+            "email": res.user.login,
+            "token": res.token,
+            "role": res.user.type,
+            "id": res.user._id
+          });
+
+          this.authService.user = user;
+          localStorage.setItem('user', JSON.stringify(user));
+        },
+        error: () => {
+          this.error = "Un utilisateur avec cet email existe déjà";
+        }
       })
     }
   }

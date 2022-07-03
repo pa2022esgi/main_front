@@ -1,38 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
-import {Router} from "@angular/router";
-import {User, UserRole} from "../../models/user.model";
+import {User} from "../../models/user.model";
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css'],
-  providers: [AuthService]
 })
 export class LoginFormComponent implements OnInit {
-  public user: User;
+  email: string | null = null;
+  password: string | null = null;
+  error: string | null = null;
 
-  constructor(private authService : AuthService, private router : Router) {
-    this.user = new User();
-  }
+  constructor(public authService : AuthService) {}
 
-  ngOnInit(): void {
-  }
-
-    // TODO call API pour login et register
-
+  ngOnInit(): void {}
 
   get() {
-    if(this.user?.email && this.user?.password) {
-      this.authService.get(this.user).subscribe(result => {
-        this.authService.user={role : UserRole.Teacher};
-        this.router.navigate(['']);
-        console.log('result is ', result);
-      }, error => {
-        console.log('error is ', error);
+    this.error = null;
+
+    if (!this.email) {
+      this.error = 'Email requis';
+    }
+
+    if (!this.password) {
+      this.error = 'Mot de passe requis';
+    }
+
+    if(!this.error) {
+      this.authService.login({"email" : this.email, "password" : this.password}).subscribe({
+        next: (res: any) => {
+          const user = new User({
+            "email": res.user.login,
+            "token": res.token,
+            "role": res.user.type,
+            "id": res.user._id
+          });
+
+          this.authService.user = user;
+          localStorage.setItem('user', JSON.stringify(user));
+        }, 
+        error : () => {
+          this.error = 'Accés refusé';
+        }
       });
-    } else {
-      alert('enter user email and password');
     }
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import { Observable} from "rxjs";
 import {User} from "../../models/user.model";
 
 const URL= "http://localhost:3000/auth/";
@@ -15,18 +14,20 @@ const httpOptions = {
 export class AuthService{
   user: User | undefined;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    if (localStorage.getItem("user") !== null) {
+      this.user = JSON.parse(localStorage.getItem('user')!);
+    }
+  }
 
-  get(user: User){
+  login(user: any){
     return this.http.post(URL + 'login',{
       "login" : user.email,
       "password" : user.password
     }, httpOptions);
   }
 
-
-  register(user: User){
-    console.log(user)
+  register(user: any){
     return this.http.post(URL + 'register',{
       "login": user.email,
       "password": user.password,
@@ -34,4 +35,8 @@ export class AuthService{
     }, httpOptions);
   }
 
+  logout(){
+    this.user = undefined;
+    localStorage.removeItem('user');
+  }
 }
