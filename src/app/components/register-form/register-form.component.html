@@ -3,27 +3,28 @@
   <mat-card-content style="display: flex; align-items: center;">
     <form class="my-form" style="width: 100vw;">
       <mat-form-field appearance="fill">
-        <mat-label>S'inscrire en tant que...</mat-label>
-        <mat-select [(ngModel)]="role">
-          <mat-option value="2">Elève</mat-option>
-          <mat-option value="1">Professeur</mat-option>
+        <mat-label>s'inscrire en tant que...</mat-label>
+        <mat-select [(ngModel)]="role" name="role">
+          <mat-option value="élève">élève</mat-option>
+          <mat-option value="professeur">professeur</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Email</mat-label>
+        <mat-label>email</mat-label>
         <input matInput name="email" [(ngModel)]="email" />
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Mot de passe</mat-label>
-        <input matInput name="password" [(ngModel)]="password" />
+        <mat-label>mot de passe</mat-label>
+        <input matInput name="password" type="password" [(ngModel)]="password" />
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Confirmation du mot de passe</mat-label>
-        <input matInput name="password" [(ngModel)]="confirmpassword" />
+        <mat-label>confirmation du mot de passe</mat-label>
+        <input matInput name="password" type="password" [(ngModel)]="confirmPassword" />
       </mat-form-field>
+      <span style="color: red;" *ngIf="error">{{error}}</span>
     </form>
   </mat-card-content>
-  <mat-card-footer style="margin-bottom: 25px;">
+  <mat-card-footer style="margin-bottom: 15px;">
     <button mat-raised-button (click)="register()" color="primary">
       S'inscrire
     </button>

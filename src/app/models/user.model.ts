@@ -1,11 +1,10 @@
 export enum UserRole {
-  Teacher,
-  Student
+  Teacher="professeur",
+  Student="élève"
 }
 
 export class User {
   email?: string;
   password?: string;
-  //role?: UserRole;
-  role = UserRole.Teacher;
+  role?: UserRole;
 }

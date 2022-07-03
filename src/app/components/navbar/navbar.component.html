@@ -8,7 +8,7 @@
     <a mat-button routerLink="/cours">Cours</a>
     <a mat-button routerLink="/">Blog</a>
     <a mat-button routerLink="/login" *ngIf="!authService.user">Se connecter</a>
-    <app-teacher-menu *ngIf="authService.user && authService.user.role===0"></app-teacher-menu>
-    <app-student-menu *ngIf="authService.user && authService.user.role===1"></app-student-menu>
+    <app-teacher-menu *ngIf="authService.user && authService.user.role==='professeur'"></app-teacher-menu>
+    <app-student-menu *ngIf="authService.user && authService.user.role==='élève'"></app-student-menu>
   </mat-toolbar-row>
 </mat-toolbar>

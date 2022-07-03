@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
 import {Router} from "@angular/router";
-import {User} from "../../models/user.model";
+import {User, UserRole} from "../../models/user.model";
 
 @Component({
   selector: 'app-login-form',
@@ -25,7 +25,7 @@ export class LoginFormComponent implements OnInit {
   get() {
     if(this.user?.email && this.user?.password) {
       this.authService.get(this.user).subscribe(result => {
-        this.authService.user={role : 0};
+        this.authService.user={role : UserRole.Teacher};
         this.router.navigate(['']);
         console.log('result is ', result);
       }, error => {
