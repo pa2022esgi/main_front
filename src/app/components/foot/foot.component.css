@@ -1,4 +1,6 @@
 .foot{
-  padding: 16px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background: rgb(213, 213, 213);
 }

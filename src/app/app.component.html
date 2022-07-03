@@ -1,8 +1,10 @@
-<app-navbar *ngIf="!admin"></app-navbar>
 <mat-drawer-container autosize>
+  <app-navbar *ngIf="!admin"></app-navbar>
   <mat-drawer *ngIf="admin" mode="side" opened>
     <app-sidenav-content></app-sidenav-content>
   </mat-drawer>
-  <router-outlet></router-outlet>
+  <div style="margin-bottom: 100px;">
+    <router-outlet></router-outlet>
+  </div>
+  <app-foot></app-foot>
 </mat-drawer-container>
-<app-foot></app-foot>
