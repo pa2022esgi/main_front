@@ -5,8 +5,8 @@
       <mat-form-field appearance="fill">
         <mat-label>s'inscrire en tant que...</mat-label>
         <mat-select [(ngModel)]="role" name="role">
-          <mat-option value="élève">élève</mat-option>
-          <mat-option value="professeur">professeur</mat-option>
+          <mat-option value="élève"><mat-icon>school</mat-icon>élève</mat-option>
+          <mat-option value="professeur"><mat-icon>design_services</mat-icon>professeur</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
@@ -25,7 +25,7 @@
     </form>
   </mat-card-content>
   <mat-card-footer style="margin-bottom: 15px;">
-    <button mat-raised-button (click)="register()" color="primary">
+    <button mat-raised-button (click)="register()" color="primary" style="width: 20vw;">
       S'inscrire
     </button>
   </mat-card-footer>

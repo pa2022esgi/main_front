@@ -8,13 +8,13 @@
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill" style="margin-top: 30px;">
         <mat-label>mot de passe</mat-label>
-        <input matInput name="password" [(ngModel)]="password"/>
+        <input matInput name="password" type="password" [(ngModel)]="password"/>
       </mat-form-field>
       <span style="color: red;" *ngIf="error">{{error}}</span>
     </form>
   </mat-card-content>
   <mat-card-footer style="margin-bottom: 25px;">
-    <button mat-raised-button (click)="get()" color="primary">
+    <button mat-raised-button (click)="get()" color="primary" style="width: 20vw;">
       Se connecter
     </button>
   </mat-card-footer>
