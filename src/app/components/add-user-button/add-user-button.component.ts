@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {UserService} from "../../user-service.service";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-add-user-button',
