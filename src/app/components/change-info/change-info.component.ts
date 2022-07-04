@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonalInfoService } from 'src/app/services/personal-info/personal-info.service';
 
 @Component({
   selector: 'app-change-info',
@@ -17,9 +18,24 @@ export class ChangeInfoComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor() { }
+  constructor(private service: PersonalInfoService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getInfo();
+  }
+
+  getInfo() {
+    this.service.getPersonalInfo().subscribe({
+      next: (res: any) => {
+        this.email = res.login;
+        this.firstname = res.firstname;
+        this.lastname = res.lastname;
+        this.phone = res.phone;
+        this.address = res.address;
+        this.birthdate = res.birthdate;
+      }
+    });
+  }
 
   modifyInfo() {
     this.error = null;
@@ -41,6 +57,5 @@ export class ChangeInfoComponent implements OnInit {
     if (!this.birthdate) {
       this.error = 'Date de naissance requise';
     }
-
   }
 }

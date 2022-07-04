@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpContext} from "@angular/common/http";
 import {User} from "../../models/user.model";
 import { Router } from '@angular/router';
+import { BYPASS_AUTH } from '../request.interceptor';
 
 const URL= "http://localhost:3000/auth/";
-
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  context: new HttpContext().set(BYPASS_AUTH, true)
 };
 
 @Injectable({
