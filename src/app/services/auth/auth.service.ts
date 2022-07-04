@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../../models/user.model";
+import { Router } from '@angular/router';
 
 const URL= "http://localhost:3000/auth/";
 
@@ -14,7 +15,7 @@ const httpOptions = {
 export class AuthService{
   user: User | undefined;
   
-  constructor(private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient) {
     if (localStorage.getItem("user") !== null) {
       this.user = JSON.parse(localStorage.getItem('user')!);
     }
@@ -38,5 +39,6 @@ export class AuthService{
   logout(){
     this.user = undefined;
     localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 }

@@ -2,30 +2,41 @@
   <mat-card-title><h3>INSCRIPTION</h3></mat-card-title>
   <mat-card-content style="display: flex; align-items: center;">
     <form class="my-form" style="width: 100vw;">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline">
         <mat-label>s'inscrire en tant que...</mat-label>
         <mat-select [(ngModel)]="role" name="role">
+          <mat-select-trigger>
+            {{role}}
+          </mat-select-trigger>
           <mat-option value="élève"><mat-icon>school</mat-icon>élève</mat-option>
           <mat-option value="professeur"><mat-icon>design_services</mat-icon>professeur</mat-option>
         </mat-select>
+        <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="fill">
+      <mat-form-field class="full-width" appearance="outline">
         <mat-label>email</mat-label>
         <input matInput name="email" [(ngModel)]="email" />
+        <mat-icon matSuffix>mail</mat-icon>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="fill">
+      <mat-form-field class="full-width" appearance="outline">
         <mat-label>mot de passe</mat-label>
-        <input matInput name="password" type="password" [(ngModel)]="password" />
+        <input matInput name="password" [type]="hide1 ? 'password' : 'text'" [(ngModel)]="password"/>
+        <button mat-icon-button matSuffix (click)="hide1 = !hide1">
+          <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="fill">
+      <mat-form-field class="full-width" appearance="outline">
         <mat-label>confirmation du mot de passe</mat-label>
-        <input matInput name="password" type="password" [(ngModel)]="confirmPassword" />
+        <input matInput name="password" [type]="hide2 ? 'password' : 'text'" [(ngModel)]="confirmPassword"/>
+        <button mat-icon-button matSuffix (click)="hide2 = !hide2">
+          <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
       </mat-form-field>
       <span style="color: red;" *ngIf="error">{{error}}</span>
     </form>
   </mat-card-content>
   <mat-card-footer style="margin-bottom: 15px;">
-    <button mat-raised-button (click)="register()" color="primary" style="width: 20vw;">
+    <button mat-flat-button (click)="register()" color="primary" style="width: 20vw;">
       S'inscrire
     </button>
   </mat-card-footer>

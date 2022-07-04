@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User, UserRole } from 'src/app/models/user.model';
 import {AuthService} from "../../services/auth/auth.service";
 
@@ -14,8 +15,10 @@ export class RegisterFormComponent implements OnInit {
   confirmPassword: string | null = null;
   role: UserRole | null = null;
   error: string | null = null;
+  hide1: boolean = true;
+  hide2: boolean = true;
 
-  constructor(private authService : AuthService) {}
+  constructor(private authService : AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -34,7 +37,7 @@ export class RegisterFormComponent implements OnInit {
     }
 
     if (!this.email || !this.email.match(/^\s*[A-Za-z0-9]+([-_.][A-Za-z0-9]+)*@([A-Za-z0-9]+[-.])+[A-Za-z0-9]{2,5}\s*$/)) {
-      this.error = 'Email correcte obligatoire';
+      this.error = 'Email valide obligatoire';
     }
 
     if (!this.error) {
@@ -49,6 +52,7 @@ export class RegisterFormComponent implements OnInit {
 
           this.authService.user = user;
           localStorage.setItem('user', JSON.stringify(user));
+          this.router.navigate(['/profil']);
         },
         error: () => {
           this.error = "Un utilisateur avec cet email existe déjà";

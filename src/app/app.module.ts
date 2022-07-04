@@ -38,6 +38,11 @@ import { StudentMenuComponent } from './components/student-menu/student-menu.com
 import {FormsModule} from "@angular/forms";
 import {SwiperModule} from "swiper/angular";
 import {MatGridListModule} from "@angular/material/grid-list";
+import { ProfilComponent } from './pages/profil/profil.component';
+import { ChangeInfoComponent } from './components/change-info/change-info.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -60,32 +65,37 @@ import {MatGridListModule} from "@angular/material/grid-list";
     FootComponent,
     CoursComponent,
     TeacherMenuComponent,
-    StudentMenuComponent
+    StudentMenuComponent,
+    ProfilComponent,
+    ChangeInfoComponent
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        AppRoutingModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatMenuModule,
-        FormsModule,
-        MatSidenavModule,
-        MatDividerModule,
-        MatListModule,
-        MatTableModule,
-        MatPaginatorModule,
-        HttpClientModule,
-        SwiperModule,
-        MatGridListModule
-    ],
-  providers: [AuthService],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    AppRoutingModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    FormsModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    HttpClientModule,
+    SwiperModule,
+    MatGridListModule,
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
+  providers: [AuthService, MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

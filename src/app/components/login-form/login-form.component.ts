@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth/auth.service";
 import {User} from "../../models/user.model";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -11,8 +12,9 @@ export class LoginFormComponent implements OnInit {
   email: string | null = null;
   password: string | null = null;
   error: string | null = null;
+  hide: boolean = true;
 
-  constructor(public authService : AuthService) {}
+  constructor(public authService : AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -39,6 +41,7 @@ export class LoginFormComponent implements OnInit {
 
           this.authService.user = user;
           localStorage.setItem('user', JSON.stringify(user));
+          this.router.navigate(['/profil']);
         }, 
         error : () => {
           this.error = 'Accés refusé';

@@ -6,10 +6,15 @@ import {CoursComponent} from './pages/cours/cours.component';
 
 import {AdminHomeComponent} from "./pages/admin-home/admin-home.component";
 import {UsersComponent} from "./pages/users/users.component";
+import { ProfilComponent } from './pages/profil/profil.component';
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'profil',
+    component: ProfilComponent,
   },
   {
     path: 'admin',
