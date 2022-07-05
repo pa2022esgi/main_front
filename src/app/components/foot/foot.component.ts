@@ -11,9 +11,4 @@ export class FootComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  contacter() {
-    console.log("Comment puis-je vous aider?")
-  }
-
 }
