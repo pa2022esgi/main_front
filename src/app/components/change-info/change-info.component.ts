@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonalInfoService } from 'src/app/services/personal-info/personal-info.service';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-change-info',
@@ -18,7 +19,7 @@ export class ChangeInfoComponent implements OnInit {
 
   loading: boolean = false;
 
-  constructor(private service: PersonalInfoService) { }
+  constructor(private service: PersonalInfoService, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getInfo();
@@ -56,6 +57,27 @@ export class ChangeInfoComponent implements OnInit {
     }
     if (!this.birthdate) {
       this.error = 'Date de naissance requise';
+    }
+
+    if (!this.error) {
+      this.service.updatePersonalInfo({
+        "email": this.email,
+        "firstname": this.firstname,
+        "lastname": this.lastname,
+        "phone": this.phone,
+        "address": this.address,
+        "birthdate": this.birthdate
+      }).subscribe({
+        next: (res: any) => {
+          this.snackbar.open("Informations enregistrées", "", {
+            duration: 2000,
+            panelClass: ['snackbar']
+          });
+        },
+        error: (err: any) => {
+          this.error = err.error.msg;
+        }
+      })
     }
   }
 }

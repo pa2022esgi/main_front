@@ -45,6 +45,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { RequestInterceptor } from './services/request.interceptor';
 import { ErrorComponent } from './pages/error/error.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChangePwdComponent } from './components/change-pwd/change-pwd.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { ErrorComponent } from './pages/error/error.component';
     ProfilComponent,
     ChangeInfoComponent,
     ErrorComponent,
+    ChangePwdComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +99,7 @@ import { ErrorComponent } from './pages/error/error.component';
     MatProgressSpinnerModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthService,
