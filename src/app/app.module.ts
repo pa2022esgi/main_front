@@ -47,6 +47,7 @@ import { RequestInterceptor } from './services/request.interceptor';
 import { ErrorComponent } from './pages/error/error.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangePwdComponent } from './components/change-pwd/change-pwd.component';
+import { ChangeProfilPicComponent } from './components/change-profil-pic/change-profil-pic.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { ChangePwdComponent } from './components/change-pwd/change-pwd.component
     ChangeInfoComponent,
     ErrorComponent,
     ChangePwdComponent,
+    ChangeProfilPicComponent,
   ],
   imports: [
     BrowserModule,

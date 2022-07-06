@@ -11,9 +11,9 @@ export class UsersComponent implements OnInit {
   constructor(private userService:UserService) {
   }
 
-  users_list:{name:string,login:string, type:string, address:string, phone:number, id:string}[] = [];
+  users_list:{name:string,email:string, role:string, address:string, phone:number, id:string}[] = [];
 
-  headers:string[] = ["name","login","type","address","phone","actions"];
+  headers:string[] = ["name","email","role","address","phone","actions"];
 
   ngOnInit(){
     this.getAllUsers();

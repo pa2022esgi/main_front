@@ -19,7 +19,7 @@ export class PersonalInfoService {
     return this.http.put(URL + '/' + this.auth.user?.id, { 
       "firstname": user.firstname,
       "lastname": user.lastname,
-      "login": user.email,
+      "email": user.email,
       "address": user.address,
       "phone": user.phone,
       "birthdate": user.birthdate

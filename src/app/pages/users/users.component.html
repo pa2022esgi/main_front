@@ -10,14 +10,14 @@
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="login">
-      <th mat-header-cell *matHeaderCellDef> Login </th>
-      <td mat-cell *matCellDef="let element"> {{element.login}} </td>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef> Type </th>
-      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Role </th>
+      <td mat-cell *matCellDef="let element"> {{element.role}} </td>
     </ng-container>
 
     <ng-container matColumnDef="address">
@@ -37,7 +37,7 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item *ngIf="element.type==='teacher'">Voir les fichiers du professeur</button>
+          <button mat-menu-item *ngIf="element.role==='teacher'">Voir les fichiers du professeur</button>
           <button mat-menu-item [routerLink]="['modify_id']">Modifier</button>
           <button mat-menu-item (click)="deleteUser(element._id)" >Supprimer</button>
         </mat-menu>

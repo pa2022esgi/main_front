@@ -44,9 +44,9 @@ export class RegisterFormComponent implements OnInit {
       this.authService.register({"email": this.email, "role": this.role, "password": this.password}).subscribe({
         next: (res: any) => {
           const user = new User({
-            "email": res.user.login,
+            "email": res.user.email,
             "token": res.token,
-            "role": res.user.type,
+            "role": res.user.role,
             "id": res.user._id
           });
 
@@ -54,8 +54,8 @@ export class RegisterFormComponent implements OnInit {
           localStorage.setItem('user', JSON.stringify(user));
           this.router.navigate(['/profil']);
         },
-        error: () => {
-          this.error = "Un utilisateur avec cet email existe déjà";
+        error: (err: any) => {
+          this.error = err.error.msg;
         }
       })
     }

@@ -33,9 +33,9 @@ export class LoginFormComponent implements OnInit {
       this.authService.login({"email" : this.email, "password" : this.password}).subscribe({
         next: (res: any) => {
           const user = new User({
-            "email": res.user.login,
+            "email": res.user.email,
             "token": res.token,
-            "role": res.user.type,
+            "role": res.user.role,
             "id": res.user._id
           });
 
@@ -43,8 +43,8 @@ export class LoginFormComponent implements OnInit {
           localStorage.setItem('user', JSON.stringify(user));
           this.router.navigate(['/profil']);
         }, 
-        error : () => {
-          this.error = 'Accés refusé';
+        error: (err: any) => {
+          this.error = err.error.msg;
         }
       });
     }

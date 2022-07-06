@@ -23,16 +23,16 @@ export class AuthService{
 
   login(user: any){
     return this.http.post(URL + 'login',{
-      "login" : user.email,
+      "email" : user.email,
       "password" : user.password
     }, httpOptions);
   }
 
   register(user: any){
     return this.http.post(URL + 'register',{
-      "login": user.email,
+      "email": user.email,
       "password": user.password,
-      "type": user.role
+      "role": user.role
     }, httpOptions);
   }
 

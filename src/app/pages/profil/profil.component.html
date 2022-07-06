@@ -1,4 +1,9 @@
 <div style="display: flex; justify-content: space-around; margin-top: 10vh;">
-  <app-change-info></app-change-info>
-  <app-change-pwd></app-change-pwd>
+  <app-change-info *ngIf="user" [user]="user"></app-change-info>
+  <div>
+    <app-change-pwd></app-change-pwd>
+    <div style="margin-top: 50px;">
+      <app-change-profil-pic *ngIf="user" [img]="user.profile_img != null ? user.profile_img.url : '../../../assets/profile.png'" style="margin-top: 50px;"></app-change-profil-pic>
+    </div>
+  </div>
 </div>

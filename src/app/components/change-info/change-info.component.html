@@ -5,34 +5,34 @@
       <div style="display: flex; width: 100%;">
         <mat-form-field class="full-width" appearance="outline" style="margin-right: 5px; width: 50%;">
             <mat-label>prénom</mat-label>
-            <input matInput name="address" [(ngModel)]="firstname" />
+            <input matInput name="firstname" [(ngModel)]="user.firstname" />
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
           <mat-form-field class="full-width" appearance="outline" style="margin-left: 5px; width: 50%;">
             <mat-label>nom</mat-label>
-            <input matInput name="address" [(ngModel)]="lastname" />
+            <input matInput name="lastname" [(ngModel)]="user.lastname" />
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
       </div>
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>email</mat-label>
-        <input matInput name="email" [(ngModel)]="email" />
+        <input matInput name="email" [(ngModel)]="user.email" />
         <mat-icon matSuffix>mail</mat-icon>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>date de naissance</mat-label>
-        <input matInput [matDatepicker]="picker" [max]="today" name="birthdate" [(ngModel)]="birthdate" readonly>
+        <input matInput [matDatepicker]="picker" [max]="today" name="birthdate" [(ngModel)]="user.birthdate" readonly>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>addresse</mat-label>
-        <input matInput name="address" [(ngModel)]="address" />
+        <input matInput name="address" [(ngModel)]="user.address" />
         <mat-icon matSuffix>home</mat-icon>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>téléphone</mat-label>
-        <input matInput name="phone" [(ngModel)]="phone" />
+        <input matInput name="phone" [(ngModel)]="user.phone" />
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
       <span style="color: red;" *ngIf="error">{{error}}</span>

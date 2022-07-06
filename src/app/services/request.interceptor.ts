@@ -26,11 +26,6 @@ export class RequestInterceptor implements HttpInterceptor {
     if (request.context.get(BYPASS_AUTH) !== true) {
       headers = new HttpHeaders({
         Authorization: `Bearer ${this.auth.user?.token}`,
-        'Content-Type': 'application/json',
-      });
-    } else {
-      headers = new HttpHeaders({
-        'Content-Type': 'application/json',
       });
     }
 
@@ -41,7 +36,7 @@ export class RequestInterceptor implements HttpInterceptor {
         next: (res: any) => {},
         error: (err: any) => {
           if (request.context.get(BYPASS_AUTH) !== true) {
-            if (!err.error.msg) {
+            if (!err.error) {
               if (err.status === 401) {
                 this.auth.logout();
               } else {
