@@ -1,13 +1,13 @@
 <mat-card class="my-card">
     <mat-card-title><h3>Image de profile</h3></mat-card-title>
     <mat-card-content style="display: flex; align-items: center">
-      <img src="{{img}}" class="avatar">
+      <img src="{{img ? img.url : '../../../assets/profile.png'}}" class="avatar">
       <div style="justify-content: center; width: 100%;">
         <input type="file" (change)="onFileChanged($event)" accept=".png, .jpg, .jpeg" #fileUpload style="display: none;"/>
         <button mat-flat-button (click)="fileUpload.click()" style="width: 20vw; background-color: #4caf50; color: white; margin-bottom: 5px;">
           Modifier
         </button>
-        <button mat-flat-button (click)="modifyProfilPic()" style="width: 20vw; background-color: #FF5252; color: white; margin-top: 5px;">
+        <button mat-flat-button (click)="deleteProfilPic()" style="width: 20vw; background-color: #FF5252; color: white; margin-top: 5px;" [disabled]="!img">
           Supprimer
         </button>
       </div>

@@ -3,7 +3,7 @@
   <div>
     <app-change-pwd></app-change-pwd>
     <div style="margin-top: 50px;">
-      <app-change-profil-pic *ngIf="user" [img]="user.profile_img != null ? user.profile_img.url : '../../../assets/profile.png'" style="margin-top: 50px;"></app-change-profil-pic>
+      <app-change-profil-pic *ngIf="user" [img]="user.profile_img" style="margin-top: 50px;"></app-change-profil-pic>
     </div>
   </div>
 </div>

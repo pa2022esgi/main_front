@@ -19,7 +19,9 @@ mat-form-field {
 }
 
 .avatar {
-    border-radius: 50% ;
-    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100%;
+    max-width: 100px;
     height: 100px;
 }
