@@ -8,31 +8,31 @@
         <input matInput name="name" [(ngModel)]="lesson.name" />
         <mat-icon matSuffix>menu_book</mat-icon>
       </mat-form-field>
-      <div style="display: flex">
-        <div style="width: 100%">
-          <mat-form-field appearance="outline">
-            <mat-label>Prix / heure</mat-label>
-            <input
-              matInput
-              name="price"
-              type="number"
-              [(ngModel)]="lesson.price"
-            />
-            <mat-icon matSuffix>paid</mat-icon>
-          </mat-form-field>
+      <div style="display: flex;">
+        <div style="display: flex; width: 50%;">
+          <div style="width: 100%">
+            <mat-form-field appearance="outline">
+              <mat-label>Prix / heure</mat-label>
+              <input
+                matInput
+                name="price"
+                type="number"
+                [(ngModel)]="lesson.price"
+              />
+              <mat-icon matSuffix>paid</mat-icon>
+            </mat-form-field>
+          </div>
+          <div style="padding: 24px">
+            <mat-icon style="transform: scale(1.2)" matTooltip="Le site prends 15% de commission sur chaque factures">info</mat-icon>
+          </div>
         </div>
-        <div style="padding: 24px">
-          <mat-icon
-            style="transform: scale(1.2)"
-            matTooltip="Le site prends 15% de commission sur chaque factures"
-            >info</mat-icon
-          >
+        <div style="width: 50%; display: flex; margin-top: 20px; justify-content: center;">
+          <mat-slide-toggle [checked]="lesson.visio">
+            Disponible aussi en visioconférence
+          </mat-slide-toggle>
         </div>
       </div>
-      <mat-slide-toggle [checked]="lesson.visio">
-        Disponible aussi en visioconférence
-      </mat-slide-toggle>
-      <div style="margin-top: 25px; display: flex;">
+      <div style="display: flex;">
         <div>
           <input type="file" (change)="onFileChanged($event)" accept=".png, .jpg, .jpeg" #fileUpload style="display: none;"/>
           <button mat-mini-fab (click)="fileUpload.click()" class="icon-btn">
@@ -45,11 +45,15 @@
           </span>
         </div>
       </div>
-      
   </div>
 </div>
-<div style="margin-top: 25px; display: flex; justify-content: center;">
+<div style="margin-top: 30px; display: flex; justify-content: center;">
   <div style="width: 70vw;">
     <app-text-editor></app-text-editor>
   </div>
+</div>
+<div style="width: 100%; display: flex; justify-content: center; margin-top: 40px;">
+  <button mat-flat-button (click)="save()" style="width: 25vw; background-color: var(--success); color: white">
+    Sauvegarder
+  </button>
 </div>

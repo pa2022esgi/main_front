@@ -17,4 +17,8 @@ export class CreateLessonComponent implements OnInit {
   onFileChanged(event: any) {
   }
 
+  save() {
+    
+  }
+
 }
