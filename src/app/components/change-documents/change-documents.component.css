@@ -16,7 +16,19 @@ mat-card {
 
 .alert {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   color: white;
-  background-color: var(--warning);
+  background-color: var(--accent);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.document-line{
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin-top: 10px;
+  display: flex;
 }

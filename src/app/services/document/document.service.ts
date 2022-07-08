@@ -17,6 +17,12 @@ export class DocumentService {
     return this.http.post(URL + '/' + this.auth.user?.id + '/documents/profile', formData);
   }
 
+  uploadUserDocument(file: File) {
+    const formData = new FormData();
+    formData.append("file", file);
+    return this.http.post(URL + '/' + this.auth.user?.id + '/documents', formData);
+  }
+
   deleteFile(id: string) {
     return this.http.delete(URL + '/' + this.auth.user?.id + '/documents/' + id);
   }

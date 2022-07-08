@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DocumentService } from 'src/app/services/document/document.service';
 
 @Component({
   selector: 'app-change-documents',
@@ -8,12 +9,30 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ChangeDocumentsComponent implements OnInit {
   @Input() documents: Array<any> = [];
 
-  constructor() { }
+  constructor(private service: DocumentService) { }
 
   ngOnInit(): void {
   }
 
-  uploadDoc() {
+  onFileChanged(event: any) {
+    let files: File[] = Array.from(event.target.files)
 
+    files.forEach((file: File) => {
+      if (file) {
+        this.service.uploadUserDocument(file).subscribe({
+          next: (res: any) => { this.documents.push(res) },
+        });
+      }
+    });
+  }
+
+  deleteDocument(id: string) {
+    this.service.deleteFile(id).subscribe({
+      next: () => { this.documents.splice(this.documents.findIndex(doc => doc._id === id), 1) },
+    });
+  }
+
+  openDocument(url: string) {
+    window.open(url, '_blank');
   }
 }

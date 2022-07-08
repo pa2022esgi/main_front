@@ -1,12 +1,28 @@
 <mat-card class="my-card">
     <mat-card-title><h3>Mes documents</h3></mat-card-title>
     <mat-card-content style="display: flex; align-items: center">
-      <div class="alert">
-        Merci d'uploader des documents nous permettant de valider votre profil (Pièce d'identité, diplôme, etc...)
+      <div>
+        <div class="alert" style="margin-bottom: 20px;">
+          Merci d'uploader des documents nous permettant de valider votre profil (Pièce d'identité, diplôme, etc...)
+        </div>
+        <div *ngFor="let document of documents" class="document-line">
+          <div style="width: 100%; display: flex; align-items: center; justify-items: center;">
+            <span style="width: 100%;">{{document.name}}</span>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <button mat-icon-button (click)="openDocument(document.url)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteDocument(document._id)" style="color: var(--error);">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
       </div>
     </mat-card-content>
     <mat-card-footer style="margin-bottom: 25px">
-      <button mat-flat-button (click)="uploadDoc()" style="width: 20vw; background-color: var(--success); color: white">
+      <input type="file" (change)="onFileChanged($event)" accept=".pdf, .png, .jpg, .jpeg" #fileUpload style="display: none;" multiple/>
+      <button mat-flat-button (click)="fileUpload.click()" style="width: 20vw; background-color: var(--success); color: white">
         Ajouter
       </button>
     </mat-card-footer>
