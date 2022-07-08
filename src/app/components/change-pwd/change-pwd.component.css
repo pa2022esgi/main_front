@@ -20,5 +20,5 @@ mat-card {
   
   ::ng-deep .snackbar {
     color: white;
-    background: #4caf50 !important;
+    background: var(--success) !important;
   }

@@ -1,7 +1,6 @@
 mat-card {
   display: inline-block;
   width: 40vw;
-  min-height: 60vh;
   text-align: center;
 }
 
@@ -11,15 +10,13 @@ mat-card {
 }
 
 .mat-card-content {
-  padding: 30px;
+  padding: 0px 30px 30px 30px;
   flex-grow: 1;
 }
 
-mat-form-field {
-  display: block;
-}
-
-::ng-deep .snackbar {
+.alert {
+  padding: 10px;
+  border-radius: 10px;
   color: white;
-  background: var(--success) !important;
+  background-color: var(--warning);
 }

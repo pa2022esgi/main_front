@@ -1,9 +1,14 @@
 <div style="display: flex; justify-content: space-around; margin-top: 10vh;">
-  <app-change-info *ngIf="user" [user]="user"></app-change-info>
   <div>
-    <app-change-pwd></app-change-pwd>
+    <app-change-info *ngIf="user" [user]="user"></app-change-info>
     <div style="margin-top: 50px;">
-      <app-change-profil-pic *ngIf="user" [img]="user.profile_img" style="margin-top: 50px;"></app-change-profil-pic>
+      <app-change-pwd></app-change-pwd>
+    </div>
+  </div>
+  <div>
+    <app-change-profil-pic *ngIf="user" [img]="user.profile_img" style="margin-top: 50px;"></app-change-profil-pic>
+    <div style="margin-top: 50px;">
+      <app-change-documents *ngIf="user" style="margin-top: 50px;"></app-change-documents>
     </div>
   </div>
 </div>

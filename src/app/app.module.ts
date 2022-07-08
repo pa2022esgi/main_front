@@ -48,6 +48,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangePwdComponent } from './components/change-pwd/change-pwd.component';
 import { ChangeProfilPicComponent } from './components/change-profil-pic/change-profil-pic.component';
+import { ChangeDocumentsComponent } from './components/change-documents/change-documents.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { ChangeProfilPicComponent } from './components/change-profil-pic/change-
     ErrorComponent,
     ChangePwdComponent,
     ChangeProfilPicComponent,
+    ChangeDocumentsComponent,
   ],
   imports: [
     BrowserModule,

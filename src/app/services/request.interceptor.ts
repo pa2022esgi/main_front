@@ -36,6 +36,7 @@ export class RequestInterceptor implements HttpInterceptor {
         next: (res: any) => {},
         error: (err: any) => {
           if (request.context.get(BYPASS_AUTH) !== true) {
+            console.log(err)
             if (!err.error) {
               if (err.status === 401) {
                 this.auth.logout();
