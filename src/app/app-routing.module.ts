@@ -8,6 +8,7 @@ import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { CreateLessonComponent } from './pages/create-lesson/create-lesson.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'admin/users',
     component: UsersComponent,
+  },
+  {
+    path: 'create-lesson',
+    component: CreateLessonComponent,
   },
   {
     path: '',

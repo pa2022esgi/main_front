@@ -55,6 +55,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
+import { CreateLessonComponent } from './pages/create-lesson/create-lesson.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -87,6 +89,7 @@ registerLocaleData(localeFr, 'fr');
     ChangeProfilPicComponent,
     ChangeDocumentsComponent,
     UserInfoDialogComponent,
+    CreateLessonComponent,
   ],
     imports: [
         BrowserModule,
@@ -115,7 +118,8 @@ registerLocaleData(localeFr, 'fr');
         MatNativeDateModule,
         MatSnackBarModule,
         MatSlideToggleModule,
-        MatDialogModule
+        MatDialogModule,
+        MatTooltipModule
     ],
   providers: [
     AuthService,

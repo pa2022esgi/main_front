@@ -24,7 +24,6 @@ export class AddUserButtonComponent implements OnInit {
         "phone": "01 56 06 90 41",
       })
       .subscribe((response: any) => {
-        console.log(response);
         this.reload.emit();
       });
   }
