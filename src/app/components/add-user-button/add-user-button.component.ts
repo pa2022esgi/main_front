@@ -1,25 +1,31 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {UserService} from "../../services/user/user.service";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-add-user-button',
   templateUrl: './add-user-button.component.html',
-  styleUrls: ['./add-user-button.component.css']
+  styleUrls: ['./add-user-button.component.css'],
 })
 export class AddUserButtonComponent implements OnInit {
-
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService) {}
 
   @Output() reload = new EventEmitter<void>();
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  createNewUser(){
-    this.userService.createUser("0","0","test17","0","0",6986498).subscribe((response:any) =>{
-      console.log(response);
-      this.reload.emit();
-    });
+  createNewUser() {
+    this.userService
+      .createUser({
+        "firstname": "test",
+        "role": "admin",
+        "email": "test@mail.com",
+        "password": "Test1234",
+        "address": "242 Rue du Faubourg Saint-Antoine, 75012 Paris",
+        "phone": "01 56 06 90 41",
+      })
+      .subscribe((response: any) => {
+        console.log(response);
+        this.reload.emit();
+      });
   }
-
 }

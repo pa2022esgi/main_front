@@ -1,28 +1,35 @@
-import { HttpClient } from "@angular/common/http";
-import {Injectable} from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-const URL= "http://localhost:3000/users";
+const URL = 'http://localhost:3000/users';
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
-export class UserService{
+export class UserService {
   constructor(private http: HttpClient) {}
 
-  createUser(firstname:string, role:string, email:string, password:string, address:string, phone:number){
-    return this.http.post(URL + '/', { firstname, role, email, password, address, phone });
+  createUser(user: any) {
+    return this.http.post(URL + '/', {
+      firstname: user.firstname,
+      role: user.role,
+      email: user.email,
+      password: user.password,
+      address: user.address,
+      phone: user.phone,
+    });
   }
 
-  getAllUsers(){
+  getAllUsers() {
     return this.http.get(URL + '/');
   }
 
-  deleteUserByID(id:string){
+  deleteUserByID(id: string) {
     return this.http.delete(URL + '/' + id);
   }
 
-  validateUser(id:string, validated: boolean){
-    return this.http.put(URL + '/' + id, { 
-      validated
+  validateUser(id: string, validated: boolean) {
+    return this.http.put(URL + '/' + id, {
+      validated,
     });
   }
 }

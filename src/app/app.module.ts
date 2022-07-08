@@ -51,6 +51,13 @@ import { ChangeProfilPicComponent } from './components/change-profil-pic/change-
 import { ChangeDocumentsComponent } from './components/change-documents/change-documents.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { UserInfoDialogComponent } from './components/user-info-dialog/user-info-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { LOCALE_ID } from '@angular/core';
+
+registerLocaleData(localeFr, 'fr');
+
 
 @NgModule({
   declarations: [
@@ -107,7 +114,8 @@ import { UserInfoDialogComponent } from './components/user-info-dialog/user-info
         MatDatepickerModule,
         MatNativeDateModule,
         MatSnackBarModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MatDialogModule
     ],
   providers: [
     AuthService,
@@ -117,6 +125,7 @@ import { UserInfoDialogComponent } from './components/user-info-dialog/user-info
       useClass: RequestInterceptor,
       multi: true,
     },
+    {provide: LOCALE_ID, useValue: 'fr' }
   ],
   bootstrap: [AppComponent],
 })

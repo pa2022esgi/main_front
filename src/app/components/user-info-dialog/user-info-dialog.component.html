@@ -1,1 +1,52 @@
-<p>user-info-dialog works!</p>
+<div style="display: flex; width: 100%">
+  <div style="margin-top: 5px;">
+    <h1 mat-dialog-title>Informations de l'utilisateur</h1>
+  </div>
+  <div style="margin-left: auto;">
+    <button
+      mat-icon-button
+      (click)="close()"
+      style="color: var(--error)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <div style="display: flex; justify-content: center;">
+    <img src="{{user.profile_img ? user.profile_img.url : '../../../assets/profile.png'}}" class="avatar">
+  </div>
+  <div style="margin-top: 15px;">
+    <span style="font-weight: bold;">Nom</span> :
+    {{ user.firstname && user.lastname ? (user.firstname + " " + user.lastname) : "∅" }}
+  </div>
+  <div style="margin-top: 10px">
+    <span style="font-weight: bold">Role</span> : {{ user.role }}
+  </div>
+  <div style="margin-top: 10px">
+    <span style="font-weight: bold">Date de naissance</span> :
+    {{ (user.birthdate | date: "longDate") || "∅"}}
+  </div>
+  <div style="margin-top: 10px">
+    <span style="font-weight: bold">Email</span> : {{ user.email || "∅" }}
+  </div>
+  <div style="margin-top: 10px">
+    <span style="font-weight: bold">Téléphone</span> : {{ user.phone || "∅" }}
+  </div>
+  <div style="margin-top: 10px">
+    <span style="font-weight: bold">Addresse</span> : {{ user.address || "∅" }}
+  </div>
+  <div style="margin-top: 25px;" *ngIf="user.documents.length > 0">
+    <span style="font-weight: bold">Liste des documents :</span>
+    <div *ngFor="let document of user.documents" class="document-line">
+    <div style="width: 100%; display: flex; align-items: center; justify-items: center;">
+        <span style="width: 100%;">{{document.name}}</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+        <button mat-icon-button (click)="openDocument(document.url)">
+        <mat-icon>visibility</mat-icon>
+        </button>
+    </div>
+    </div>
+  </div>
+</div>

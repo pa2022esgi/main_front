@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
+import {MatDialog} from "@angular/material/dialog";
+import { UserInfoDialogComponent } from '../user-info-dialog/user-info-dialog.component';
 
 @Component({
   selector: 'app-users-list',
@@ -8,16 +10,15 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class UsersListComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, public dialog: MatDialog) { }
 
   @Input() users_list: Array<any> = [];
   @Output() reload = new EventEmitter<void>();
 
   headers: string[] = ['name', 'email', 'role', 'validation', 'actions'];
 
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
   handleValidate(id: string, $event: boolean) {
     this.userService.validateUser(id, $event).subscribe();
   }
@@ -25,6 +26,15 @@ export class UsersListComponent implements OnInit {
   deleteUser(id: string) {
     this.userService.deleteUserByID(id).subscribe(() => {
       this.reload.emit();
+    });
+  }
+
+  dialogInfo(element: any) {
+    this.dialog.open(UserInfoDialogComponent, {
+      width: '600px',
+      data: {user: element},
+      autoFocus: false,
+      disableClose: true, 
     });
   }
 }
