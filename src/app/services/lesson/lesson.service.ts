@@ -21,4 +21,8 @@ export class LessonService {
       "file": lesson.file
     });
   }
+
+  getUserLesson() {
+    return this.http.get(URL + '/' + this.auth.user?.id + '/cours');
+  }
 }

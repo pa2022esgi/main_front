@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DocumentService } from 'src/app/services/document/document.service';
 import { LessonService } from 'src/app/services/lesson/lesson.service';
 
@@ -13,9 +14,10 @@ export class CreateLessonComponent implements OnInit {
   error: string | null = null;
   file: File | null = null;
 
-  constructor(private docService: DocumentService, private lessonService: LessonService) { }
+  constructor(private docService: DocumentService, private lessonService: LessonService, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.getLesson();
     if (!this.lesson.available) {
       this.lesson.available = true;
     }
@@ -30,6 +32,16 @@ export class CreateLessonComponent implements OnInit {
     if (file) {
       this.file = file;
     }
+  }
+  getLesson() {
+    this.lessonService.getUserLesson().subscribe((res: any) => {
+      console.log(res)
+      this.lesson.name = res.name;
+      this.lesson.price = res.price;
+      this.lesson.text = res.text;
+      this.lesson.online = res.online;
+      this.lesson.available = res.available;
+    });
   }
 
   save() {
@@ -48,14 +60,20 @@ export class CreateLessonComponent implements OnInit {
     }
 
     if (!this.error) {
-      this.docService.uploadDocument(this.file!).subscribe((res: any) => {
-        console.log(res)
-        this.lesson.file = res._id;
-        this.lessonService.createLesson(this.lesson).subscribe((res: any) => {
-          console.log(res);
+      this.create();
+    }
+  }
+
+  create() {
+    this.docService.uploadDocument(this.file!).subscribe((res: any) => {
+      this.lesson.file = res._id;
+      this.lessonService.createLesson(this.lesson).subscribe((res: any) => {
+        this.snackbar.open("Informations enregistrées", "", {
+          duration: 2000,
+          panelClass: ['snackbar']
         });
       });
-    }
+    });
   }
 
 }

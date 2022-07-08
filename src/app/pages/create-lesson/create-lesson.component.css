@@ -10,3 +10,8 @@ mat-form-field {
     color: white; 
     box-shadow: none;
 }
+
+::ng-deep .snackbar {
+  color: white;
+  background: var(--success) !important;
+}
