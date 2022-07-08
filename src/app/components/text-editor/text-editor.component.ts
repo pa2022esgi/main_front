@@ -1,46 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import 'froala-editor/js/languages/fr';
-import "froala-editor/js/plugins/align.min.js";
-import "froala-editor/js/plugins/char_counter.min.js";
-import "froala-editor/js/plugins/code_beautifier.min.js";
-import "froala-editor/js/plugins/draggable.min.js";
-import "froala-editor/js/plugins/emoticons.min.js";
-import "froala-editor/js/plugins/font_size.min.js";
-import "froala-editor/js/plugins/image.min.js";
-import "froala-editor/js/third_party/image_tui.min.js";
-import "froala-editor/js/plugins/inline_class.min.js";
-import "froala-editor/js/plugins/line_breaker.min.js";
-import "froala-editor/js/plugins/link.min.js";
-import "froala-editor/js/plugins/lists.min.js";
-import "froala-editor/js/plugins/paragraph_style.min.js";
-import "froala-editor/js/plugins/paragraph_format.min.js"
-import "froala-editor/js/plugins/quick_insert.min.js";
-import "froala-editor/js/plugins/quote.min.js";
-import "froala-editor/js/plugins/table.min.js";
-import "froala-editor/js/plugins/url.min.js";
-import "froala-editor/js/plugins/video.min.js";
-import "froala-editor/js/plugins/word_paste.min.js";
+import 'froala-editor/js/plugins/align.min.js';
+import 'froala-editor/js/plugins/char_counter.min.js';
+import 'froala-editor/js/plugins/code_beautifier.min.js';
+import 'froala-editor/js/plugins/draggable.min.js';
+import 'froala-editor/js/plugins/emoticons.min.js';
+import 'froala-editor/js/plugins/font_size.min.js';
+import 'froala-editor/js/plugins/image.min.js';
+import 'froala-editor/js/third_party/image_tui.min.js';
+import 'froala-editor/js/plugins/inline_class.min.js';
+import 'froala-editor/js/plugins/line_breaker.min.js';
+import 'froala-editor/js/plugins/link.min.js';
+import 'froala-editor/js/plugins/lists.min.js';
+import 'froala-editor/js/plugins/paragraph_style.min.js';
+import 'froala-editor/js/plugins/paragraph_format.min.js';
+import 'froala-editor/js/plugins/quick_insert.min.js';
+import 'froala-editor/js/plugins/quote.min.js';
+import 'froala-editor/js/plugins/table.min.js';
+import 'froala-editor/js/plugins/url.min.js';
+import 'froala-editor/js/plugins/video.min.js';
+import 'froala-editor/js/plugins/word_paste.min.js';
 
 @Component({
   selector: 'app-text-editor',
   templateUrl: './text-editor.component.html',
-  styleUrls: ['./text-editor.component.css']
+  styleUrls: ['./text-editor.component.css'],
 })
 export class TextEditorComponent implements OnInit {
+  @Input() text: string | null = '';
+  @Output() updtText = new EventEmitter<string | null>();
 
-  content: string = "";
   options: Object = {
     placeholderText: 'Descriptif',
     charCounterCount: true,
-    language: 'en',
+    language: 'fr',
     videoUpload: false,
-    height: 300
-  }
+    height: 300,
+  };
 
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

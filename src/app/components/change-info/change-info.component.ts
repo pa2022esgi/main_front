@@ -16,9 +16,7 @@ export class ChangeInfoComponent implements OnInit {
 
   constructor(private service: PersonalInfoService, private snackbar: MatSnackBar) { }
 
-  ngOnInit(): void {
-    console.log(this.user)
-  }
+  ngOnInit(): void {}
   
   modifyInfo() {
     this.error = null;

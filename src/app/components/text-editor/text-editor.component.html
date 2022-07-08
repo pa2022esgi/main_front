@@ -1,1 +1,1 @@
-<div [froalaEditor] [froalaEditor]='options' [(froalaModel)]="content"></div>
+<div [froalaEditor] [froalaEditor]='options' [(froalaModel)]="text" (froalaModelChange)="updtText.emit(text)"></div>

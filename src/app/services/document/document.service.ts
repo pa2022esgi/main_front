@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
-const URL= "http://localhost:3000/users";
+const URL= "http://localhost:3000";
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +14,22 @@ export class DocumentService {
   uploadProfilPic(file: File) {
     const formData = new FormData();
     formData.append("file", file);
-    return this.http.post(URL + '/' + this.auth.user?.id + '/documents/profile', formData);
+    return this.http.post(URL + '/users/' + this.auth.user?.id + '/documents/profile', formData);
+  }
+
+  uploadDocument(file: File) {
+    const formData = new FormData();
+    formData.append("file", file);
+    return this.http.post(URL + '/documents', formData);
   }
 
   uploadUserDocument(file: File) {
     const formData = new FormData();
     formData.append("file", file);
-    return this.http.post(URL + '/' + this.auth.user?.id + '/documents', formData);
+    return this.http.post(URL + '/users/' + this.auth.user?.id + '/documents', formData);
   }
 
   deleteFile(id: string) {
-    return this.http.delete(URL + '/' + this.auth.user?.id + '/documents/' + id);
+    return this.http.delete(URL + '/users/' + this.auth.user?.id + '/documents/' + id);
   }
 }
