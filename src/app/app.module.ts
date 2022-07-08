@@ -57,6 +57,8 @@ import localeFr from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
 import { CreateLessonComponent } from './pages/create-lesson/create-lesson.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { TextEditorComponent } from './components/text-editor/text-editor.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -90,6 +92,7 @@ registerLocaleData(localeFr, 'fr');
     ChangeDocumentsComponent,
     UserInfoDialogComponent,
     CreateLessonComponent,
+    TextEditorComponent,
   ],
     imports: [
         BrowserModule,
@@ -119,7 +122,9 @@ registerLocaleData(localeFr, 'fr');
         MatSnackBarModule,
         MatSlideToggleModule,
         MatDialogModule,
-        MatTooltipModule
+        MatTooltipModule,
+        FroalaEditorModule.forRoot(),
+        FroalaViewModule.forRoot()
     ],
   providers: [
     AuthService,
