@@ -51,7 +51,8 @@ export class ChangeInfoComponent implements OnInit {
         next: (res: any) => {
           this.snackbar.open("Informations enregistrées", "", {
             duration: 2000,
-            panelClass: ['snackbar']
+            panelClass: ['snackbar'],
+            verticalPosition: 'top'
           });
         },
         error: (err: any) => {

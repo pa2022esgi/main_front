@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { lastValueFrom } from 'rxjs';
 import { DocumentService } from 'src/app/services/document/document.service';
 import { LessonService } from 'src/app/services/lesson/lesson.service';
 
 @Component({
   selector: 'app-create-lesson',
   templateUrl: './create-lesson.component.html',
-  styleUrls: ['./create-lesson.component.css']
+  styleUrls: ['./create-lesson.component.css'],
 })
 export class CreateLessonComponent implements OnInit {
-
   lesson: any = {};
   error: string | null = null;
   file: File | null = null;
 
-  constructor(private docService: DocumentService, private lessonService: LessonService, private snackbar: MatSnackBar) { }
+  constructor(
+    private docService: DocumentService,
+    private lessonService: LessonService,
+    private snackbar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.getLesson();
@@ -34,13 +38,14 @@ export class CreateLessonComponent implements OnInit {
     }
   }
   getLesson() {
-    this.lessonService.getUserLesson().subscribe((res: any) => {
-      console.log(res)
-      this.lesson.name = res.name;
-      this.lesson.price = res.price;
-      this.lesson.text = res.text;
-      this.lesson.online = res.online;
-      this.lesson.available = res.available;
+    this.lessonService.getUserLesson().subscribe({
+      next: (res: any) => {
+        this.lesson = res;
+      },
+      error: (err: any) => {
+        this.lesson.available = true;
+        this.lesson.online = false;
+      }
     });
   }
 
@@ -52,7 +57,7 @@ export class CreateLessonComponent implements OnInit {
     if (!this.lesson.price) {
       this.error = 'Le prix du cours est obligatoire';
     }
-    if (!this.file) {
+    if (!this.file && !this.lesson.cover) {
       this.error = 'Image de couverture obligatoire';
     }
     if (!this.lesson.text) {
@@ -60,7 +65,11 @@ export class CreateLessonComponent implements OnInit {
     }
 
     if (!this.error) {
-      this.create();
+      if (!this.lesson._id) {
+        this.create();
+      } else {
+        this.update();
+      }
     }
   }
 
@@ -68,12 +77,32 @@ export class CreateLessonComponent implements OnInit {
     this.docService.uploadDocument(this.file!).subscribe((res: any) => {
       this.lesson.file = res._id;
       this.lessonService.createLesson(this.lesson).subscribe((res: any) => {
-        this.snackbar.open("Informations enregistrées", "", {
+        this.snackbar.open('Informations enregistrées', '', {
           duration: 2000,
-          panelClass: ['snackbar']
+          panelClass: ['snackbar'],
+          verticalPosition: 'top'
         });
       });
     });
   }
 
+  async update() {
+    if (this.file) {
+      let res: any = await lastValueFrom(
+        this.docService.uploadDocument(this.file!)
+      );
+      this.lesson.file = res._id;
+      this.file = null;
+    } else {
+      this.lesson.file = this.lesson.cover._id;
+    }
+
+    this.lessonService.updateLesson(this.lesson).subscribe((res: any) => {
+      this.snackbar.open('Informations enregistrées', '', {
+        duration: 2000,
+        panelClass: ['snackbar'],
+        verticalPosition: 'top'
+      });
+    });
+  }
 }

@@ -41,7 +41,7 @@
         </div>
         <div style="display: flex; align-items: center; margin-left: 20px;">
           <span>
-            Image de couverture : {{file ? file.name : "..."}}
+            Image de couverture : {{file ? file.name : (lesson.cover ? lesson.cover.name : "...")}}
           </span>
         </div>
       </div>

@@ -33,7 +33,8 @@ export class ChangePwdComponent implements OnInit {
         next: (res: any) => {
           this.snackbar.open("Mot de passe modifié", "", {
             duration: 2000,
-            panelClass: ['snackbar']
+            panelClass: ['snackbar'],
+            verticalPosition: 'top'
           });
         }
       })
