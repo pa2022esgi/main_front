@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-users-list',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
+  @Input() users_list: Array<any> = [];
+  @Output() reload = new EventEmitter<void>();
+
+  headers: string[] = ['name', 'email', 'role', 'validation', 'actions'];
+
+  ngOnInit() {
+
+  }
+  handleValidate(id: string, $event: boolean) {
+    this.userService.validateUser(id, $event).subscribe();
   }
 
+  deleteUser(id: string) {
+    this.userService.deleteUserByID(id).subscribe(() => {
+      this.reload.emit();
+    });
+  }
 }

@@ -10,7 +10,7 @@ export class AddUserButtonComponent implements OnInit {
 
   constructor(private userService:UserService) { }
 
-  @Output() userListEvent = new EventEmitter<void>();
+  @Output() reload = new EventEmitter<void>();
 
   ngOnInit(): void {
   }
@@ -18,7 +18,7 @@ export class AddUserButtonComponent implements OnInit {
   createNewUser(){
     this.userService.createUser("0","0","test17","0","0",6986498).subscribe((response:any) =>{
       console.log(response);
-      this.userListEvent.emit();
+      this.reload.emit();
     });
   }
 

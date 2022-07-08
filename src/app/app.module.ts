@@ -49,6 +49,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangePwdComponent } from './components/change-pwd/change-pwd.component';
 import { ChangeProfilPicComponent } from './components/change-profil-pic/change-profil-pic.component';
 import { ChangeDocumentsComponent } from './components/change-documents/change-documents.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { UserInfoDialogComponent } from './components/user-info-dialog/user-info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -77,34 +79,36 @@ import { ChangeDocumentsComponent } from './components/change-documents/change-d
     ChangePwdComponent,
     ChangeProfilPicComponent,
     ChangeDocumentsComponent,
+    UserInfoDialogComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
-    FormsModule,
-    MatSidenavModule,
-    MatDividerModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    HttpClientModule,
-    SwiperModule,
-    MatGridListModule,
-    MatProgressSpinnerModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSnackBarModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatMenuModule,
+        FormsModule,
+        MatSidenavModule,
+        MatDividerModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        HttpClientModule,
+        SwiperModule,
+        MatGridListModule,
+        MatProgressSpinnerModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSnackBarModule,
+        MatSlideToggleModule
+    ],
   providers: [
     AuthService,
     MatDatepickerModule,
