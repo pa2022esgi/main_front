@@ -9,6 +9,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { CreateLessonComponent } from './pages/create-lesson/create-lesson.component';
+import { LessonComponent } from './pages/lesson/lesson.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -27,8 +28,12 @@ const routes: Routes = [
     component: UsersComponent,
   },
   {
-    path: 'create-lesson',
+    path: 'my-lesson',
     component: CreateLessonComponent,
+  },
+  {
+    path: 'lesson/:id',
+    component: LessonComponent,
   },
   {
     path: '',

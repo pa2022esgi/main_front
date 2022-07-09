@@ -52,12 +52,15 @@
     <app-text-editor [text]="lesson.text" (updtText)="lesson.text = $event"></app-text-editor>
   </div>
 </div>
-<div style="width: 100%; margin-top: 30px;">
+<div style="width: 100%; margin-top: 25px;">
   <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 25px;">
     <span style="color: red;" *ngIf="error">{{error}}</span>
   </div>
   <div style="width: 100%; display: flex; justify-content: center;">
-    <button mat-flat-button (click)="save()" style="width: 25vw; background-color: var(--success); color: white">
+    <button mat-flat-button (click)="goToLesson()" style="width: 25vw; background-color: var(--info); color: white; margin-right: 10px;" [disabled]="!this.lesson._id || !this.lesson.available">
+      Voir le cours
+    </button>
+    <button mat-flat-button (click)="save()" style="width: 25vw; background-color: var(--success); color: white; margin-left: 10px;">
       Sauvegarder
     </button>
   </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { DocumentService } from 'src/app/services/document/document.service';
 import { LessonService } from 'src/app/services/lesson/lesson.service';
@@ -17,7 +18,8 @@ export class CreateLessonComponent implements OnInit {
   constructor(
     private docService: DocumentService,
     private lessonService: LessonService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -77,6 +79,8 @@ export class CreateLessonComponent implements OnInit {
     this.docService.uploadDocument(this.file!).subscribe((res: any) => {
       this.lesson.file = res._id;
       this.lessonService.createLesson(this.lesson).subscribe((res: any) => {
+        this.file = null;
+        this.lesson = res;
         this.snackbar.open('Informations enregistrées', '', {
           duration: 2000,
           panelClass: ['snackbar'],
@@ -104,5 +108,9 @@ export class CreateLessonComponent implements OnInit {
         verticalPosition: 'top'
       });
     });
+  }
+
+  goToLesson() {
+    this.router.navigate(['/lesson', this.lesson._id]);
   }
 }

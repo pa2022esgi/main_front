@@ -59,6 +59,7 @@ import { CreateLessonComponent } from './pages/create-lesson/create-lesson.compo
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { TextEditorComponent } from './components/text-editor/text-editor.component';
+import { LessonComponent } from './pages/lesson/lesson.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -93,6 +94,7 @@ registerLocaleData(localeFr, 'fr');
     UserInfoDialogComponent,
     CreateLessonComponent,
     TextEditorComponent,
+    LessonComponent,
   ],
     imports: [
         BrowserModule,
