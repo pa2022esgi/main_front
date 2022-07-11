@@ -60,6 +60,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { TextEditorComponent } from './components/text-editor/text-editor.component';
 import { LessonComponent } from './pages/lesson/lesson.component';
+import { ChatComponent } from './pages/chat/chat.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -95,6 +96,7 @@ registerLocaleData(localeFr, 'fr');
     CreateLessonComponent,
     TextEditorComponent,
     LessonComponent,
+    ChatComponent,
   ],
     imports: [
         BrowserModule,

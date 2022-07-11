@@ -17,7 +17,7 @@
       </div>
     </div>
     <div style="margin-top: 25px; display: flex;">
-      <button mat-flat-button style="width: 25vw; background-color: var(--info); color: white; margin-right: 10px;">
+      <button mat-flat-button style="width: 25vw; background-color: var(--info); color: white; margin-right: 10px;" (click)="contact()" [disabled]="auth.user && auth.user.role !== 'élève'">
         Contacter ce professeur
       </button>
       <div style="display: flex; align-items:center;">

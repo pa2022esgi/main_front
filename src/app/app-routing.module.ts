@@ -10,6 +10,7 @@ import { ProfilComponent } from './pages/profil/profil.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { CreateLessonComponent } from './pages/create-lesson/create-lesson.component';
 import { LessonComponent } from './pages/lesson/lesson.component';
+import { ChatComponent } from './pages/chat/chat.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'lesson/:id',
     component: LessonComponent,
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
   },
   {
     path: '',

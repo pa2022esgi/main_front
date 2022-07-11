@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { LessonService } from 'src/app/services/lesson/lesson.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LessonComponent implements OnInit {
 
   id: string | null = null;
   lesson: any | null = null;
-  constructor(private route: ActivatedRoute, private service: LessonService) { }
+  constructor(private route: ActivatedRoute, private service: LessonService, public auth: AuthService, public router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -26,4 +27,10 @@ export class LessonComponent implements OnInit {
     });
   }
 
+  contact() {
+    console.log('contact');
+    if (!this.auth.user) {
+      this.router.navigate(['/login']);
+    }
+  }  
 }
