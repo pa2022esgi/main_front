@@ -1,1 +1,23 @@
-<p>chat works!</p>
+<div style="display: flex; justify-content: center">
+  <div style="width: 70vw; margin-top: 5vh">
+    <div style="display: flex">
+      <mat-form-field appearance="outline" style="width: 65%">
+        <mat-label>Message</mat-label>
+        <input matInput name="message" [(ngModel)]="message" />
+        <mat-icon matSuffix>chat</mat-icon>
+      </mat-form-field>
+      <div style="display: flex; justify-content: center; width: 35%;">
+        <button
+          mat-flat-button
+          (click)="sendMessage()"
+          style="width: 75%; background-color: var(--success); color: white; height: 36px; margin-top: 16px;"
+        >
+          Envoyer
+        </button>
+      </div>
+    </div>
+    <div>
+      {{ messages | json }}
+    </div>
+  </div>
+</div>

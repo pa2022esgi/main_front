@@ -64,7 +64,6 @@ import { ChatComponent } from './pages/chat/chat.component';
 
 registerLocaleData(localeFr, 'fr');
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -128,7 +127,7 @@ registerLocaleData(localeFr, 'fr');
         MatDialogModule,
         MatTooltipModule,
         FroalaEditorModule.forRoot(),
-        FroalaViewModule.forRoot()
+        FroalaViewModule.forRoot(),
     ],
   providers: [
     AuthService,

@@ -28,9 +28,10 @@ export class LessonComponent implements OnInit {
   }
 
   contact() {
-    console.log('contact');
     if (!this.auth.user) {
       this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/chat'], {queryParams : {'user-id': this.lesson.user._id}});
     }
   }  
 }
