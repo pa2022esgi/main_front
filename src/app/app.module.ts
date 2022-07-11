@@ -95,7 +95,7 @@ registerLocaleData(localeFr, 'fr');
     CreateLessonComponent,
     TextEditorComponent,
     LessonComponent,
-    ChatComponent,
+    ChatComponent
   ],
     imports: [
         BrowserModule,

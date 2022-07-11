@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { io } from 'socket.io-client';
 import { AuthService } from '../auth/auth.service';
 
-const URL= "http://localhost:3000/chats";
+const URL= "http://localhost:3000";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,10 @@ const URL= "http://localhost:3000/chats";
 export class ChatService {
   constructor(private auth: AuthService, private http: HttpClient) { }
 
-  socket = io('http://localhost:3000', {
-    auth: {token : this.auth.user?.token},
+  socket = io(URL, {
+    auth: {
+      token : this.auth.user?.token
+    },
     query: {
       userId: this.auth.user?.id
     }
@@ -34,9 +36,13 @@ export class ChatService {
   };
 
   public createChat(id: string) {
-    return this.http.post(URL, {
+    return this.http.post(URL + '/chats', {
       creator: this.auth.user?.id,
       goal: id
     })
+  }
+
+  public getChats() {
+    return this.http.get(URL + '/users/' + this.auth.user?.id + '/chats');
   }
 }

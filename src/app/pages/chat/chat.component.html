@@ -1,23 +1,35 @@
 <div style="display: flex; justify-content: center">
   <div style="width: 70vw; margin-top: 5vh">
-    <div style="display: flex">
-      <mat-form-field appearance="outline" style="width: 65%">
-        <mat-label>Message</mat-label>
-        <input matInput name="message" [(ngModel)]="message" />
-        <mat-icon matSuffix>chat</mat-icon>
-      </mat-form-field>
-      <div style="display: flex; justify-content: center; width: 35%;">
-        <button
-          mat-flat-button
-          (click)="sendMessage()"
-          style="width: 75%; background-color: var(--success); color: white; height: 36px; margin-top: 16px;"
-        >
-          Envoyer
-        </button>
-      </div>
-    </div>
     <div>
-      {{ messages | json }}
+      <mat-drawer-container>
+        <mat-drawer mode="side" opened style="max-width: 220px; min-width: 220px">
+          <mat-nav-list>
+            <a mat-list-item *ngFor="let chat of chats">
+              <span mat-line>{{isReceiver(chat.users).email}}</span>
+            </a>
+          </mat-nav-list>
+        </mat-drawer>
+        <mat-drawer-content style="min-height: 75vh !important">
+          <div style="min-height: 70vh">
+            {{messages | json}}
+          </div>
+          <div style="display: flex;">
+            <mat-form-field appearance="outline" style="width: 90%; margin-left: 25px;">
+              <mat-label>Message</mat-label>
+              <input matInput name="message" [(ngModel)]="message" />
+              <mat-icon matSuffix>chat</mat-icon>
+            </mat-form-field>
+            <div style="display: flex; justify-content: center; width: 10%; align-items: center;">
+              <button
+                mat-mini-fab
+                (click)="sendMessage()"
+                style="background-color: var(--success);color: white;">
+              <mat-icon>send</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-drawer-content>
+      </mat-drawer-container>
     </div>
   </div>
 </div>
