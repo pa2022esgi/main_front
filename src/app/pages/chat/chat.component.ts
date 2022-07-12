@@ -9,7 +9,7 @@ import { ChatService } from 'src/app/services/chat/chat.service';
   styleUrls: ['./chat.component.css'],
 })
 export class ChatComponent implements OnInit {
-  messages: string[] = [];
+  messages: any[] = [];
   chats: any[] = [];
   message: string = '';
   error: string | null = null;
@@ -28,12 +28,13 @@ export class ChatComponent implements OnInit {
     this.getChats();
 
     this.chat.getNewMessage().subscribe((message: string) => {
-      this.messages.push(message);
+      this.messages.push({text: message});
     });
   }
 
   sendMessage() {
     this.chat.sendMessage(this.message, this.receiver!);
+    
     this.message = '';
   }
 
@@ -52,7 +53,8 @@ export class ChatComponent implements OnInit {
         if (res.length > 0) {
           this.receiver = this.isReceiver(res[0].users)._id;
           this.selecteds.push(res[0]._id);
-          this.messages = res[0].messages;
+          this.messages = res[0].messages || [];
+          console.log(res[0])
         }
       },
     });
