@@ -14,6 +14,7 @@ export class ChatComponent implements OnInit {
   message: string = '';
   error: string | null = null;
   receiver: string | null = null;
+  selecteds : any[] = []; 
 
   constructor(private chat: ChatService, private route: ActivatedRoute, private auth: AuthService) {}
 
@@ -50,6 +51,8 @@ export class ChatComponent implements OnInit {
         this.chats = res;
         if (res.length > 0) {
           this.receiver = this.isReceiver(res[0].users)._id;
+          this.selecteds.push(res[0]._id);
+          this.messages = res[0].messages;
         }
       },
     });
@@ -59,4 +62,10 @@ export class ChatComponent implements OnInit {
     return users.find(user => user._id !== this.auth.user?.id);
   }
   
+  onSelected(event: any) {
+    this.receiver = this.isReceiver(this.chats.find(chat => chat._id === event[0]).users)._id
+    this.chat.getChat(event[0]).subscribe((res: any) => {
+      this.messages = res.messages;
+    });
+  }
 }

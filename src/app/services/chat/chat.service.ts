@@ -28,7 +28,7 @@ export class ChatService {
   }
 
   public getNewMessage = () => {
-    this.socket.on('message', (message) =>{
+    this.socket.on('message', (message) => {
       this.message$.next(message);
     });
     
@@ -44,5 +44,9 @@ export class ChatService {
 
   public getChats() {
     return this.http.get(URL + '/users/' + this.auth.user?.id + '/chats');
+  }
+
+  public getChat(id: string) {
+    return this.http.get(URL + '/chats/' + id);
   }
 }
