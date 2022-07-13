@@ -3,5 +3,11 @@
 }
 
 ::ng-deep .mat-list-single-selected-option {
-  background: rgba(33, 150, 243, 0.3) !important;
+  background: rgba(33, 150, 243, 0.1) !important;
+}
+
+.msg-box {
+  padding: 20px;
+  background: rgba(33, 150, 243, 0.1) !important;
+  margin-top: 20px;
 }

@@ -1,9 +1,12 @@
 <div style="display: flex; justify-content: center">
-  <div style="width: 70vw; margin-top: 5vh; display: flex; overflow: auto;">
+  <div *ngIf="chats.length === 0" style="margin-top: 5vh;">
+    Aucune discussion active
+  </div>
+  <div *ngIf="chats.length > 0;" style="width: 70vw; margin-top: 5vh; display: flex;">
     <div style="max-width: 220px; min-width: 220px">
-      <mat-selection-list [multiple]="false" *ngIf="receiver" [(ngModel)]="selecteds" (ngModelChange)="onSelected($event)">
+      <mat-selection-list [multiple]="false" [(ngModel)]="selecteds" (ngModelChange)="onSelected($event)">
         <mat-list-option mat-list-item *ngFor="let chat of chats" [value]="chat._id">
-          {{isReceiver(chat.users).email}}
+          {{isReceiver(chat.users).firstname ? (isReceiver(chat.users).firstname + ' ' + isReceiver(chat.users).lastname) : isReceiver(chat.users).email}}
         </mat-list-option>
       </mat-selection-list>
     </div>
@@ -18,14 +21,20 @@
           <button
             mat-mini-fab
             (click)="sendMessage()"
-            style="background-color: var(--success);color: white;">
+            [disabled]="message === ''"
+            style="background-color: var(--success);color: white; box-shadow: none;">
           <mat-icon>send</mat-icon>
           </button>
         </div>
       </div>
       <div style="min-height: 65vh; max-height: 65vh; height: 65vh; overflow: auto;">
         <div style="width: 90%; padding: 20px;">
-          <div *ngFor="let msg of messages">
+          <div *ngFor="let msg of messages.reverse()" class="msg-box" [ngStyle]="{'border-radius': (msg.user._id === auth.user?.id) ? '15px 0px 15px 15px' : '0px 15px 15px 15px'}">
+            <div style="margin-bottom: 10px;">
+              {{msg.user.firstname ? (msg.user.firstname + ' ' + msg.user.lastname) : msg.user.email}}
+              -
+              {{msg.createdAt | date: "short"}}
+            </div>
             <span>{{msg.text}}</span>
           </div>
         </div>

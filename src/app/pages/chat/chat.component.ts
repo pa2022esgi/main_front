@@ -13,10 +13,9 @@ export class ChatComponent implements OnInit {
   chats: any[] = [];
   message: string = '';
   error: string | null = null;
-  receiver: string | null = null;
   selecteds : any[] = []; 
 
-  constructor(private chat: ChatService, private route: ActivatedRoute, private auth: AuthService) {}
+  constructor(private chat: ChatService, private route: ActivatedRoute, public auth: AuthService) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -27,22 +26,36 @@ export class ChatComponent implements OnInit {
 
     this.getChats();
 
-    this.chat.getNewMessage().subscribe((message: string) => {
-      this.messages.push({text: message});
+    this.chat.getNewMessage().subscribe((message: any) => {
+      if (message !== "") {
+        const chat = this.chats.find(chat => chat._id === message.chat._id);
+        if (chat) {
+          if (chat._id === this.selecteds[0]) {
+            this.messages.push(message.msg);
+          }
+        } else {
+          this.getChats();
+        }
+      }
     });
   }
 
   sendMessage() {
-    this.chat.sendMessage(this.message, this.receiver!);
-    
+    this.chat.sendMessage(this.message, this.isReceiver(this.chats.find(chat => chat._id === this.selecteds[0]).users)._id);
+    this.messages.push({
+      text: this.message,
+      user: this.isSender(this.chats.find(chat => chat._id === this.selecteds[0]).users),
+      createdAt: new Date(),
+    });
     this.message = '';
   }
 
   createChat(id: string) {
     this.chat.createChat(id).subscribe({
       next: (res: any) => {
-        console.log(res);
+        this.getChats();
       },
+      error: (err: any) => {},
     });
   }
 
@@ -51,10 +64,8 @@ export class ChatComponent implements OnInit {
       next: (res: any) => {
         this.chats = res;
         if (res.length > 0) {
-          this.receiver = this.isReceiver(res[0].users)._id;
           this.selecteds.push(res[0]._id);
           this.messages = res[0].messages || [];
-          console.log(res[0])
         }
       },
     });
@@ -63,9 +74,12 @@ export class ChatComponent implements OnInit {
   isReceiver(users: any[]) {
     return users.find(user => user._id !== this.auth.user?.id);
   }
+
+  isSender(users: any[]) {
+    return users.find(user => user._id === this.auth.user?.id);
+  }
   
   onSelected(event: any) {
-    this.receiver = this.isReceiver(this.chats.find(chat => chat._id === event[0]).users)._id
     this.chat.getChat(event[0]).subscribe((res: any) => {
       this.messages = res.messages;
     });
