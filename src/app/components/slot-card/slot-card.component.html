@@ -12,11 +12,11 @@
             <mat-icon style="color: var(--error);">delete</mat-icon>
             Supprimer
           </button>
-          <button mat-menu-item (click)="pay()" *ngIf="auth.user!.role === 'élève' && !slot.paid">
+          <button mat-menu-item (click)="pay()" *ngIf="auth.user!.role === 'élève' && !slot.paid && !isOlder()">
             <mat-icon>shopping_cart</mat-icon>
             Payer
           </button>
-          <button mat-menu-item *ngIf="slot.paid">
+          <button mat-menu-item *ngIf="slot.paid" (click)="downloadInvoice()">
             <mat-icon>picture_as_pdf</mat-icon>
             Télécharger la facture
           </button>

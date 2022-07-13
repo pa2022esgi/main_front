@@ -52,4 +52,14 @@ export class SlotCardComponent implements OnInit {
       this.reload.emit();
     });
   }
+
+  downloadInvoice() {
+    console.log('download invoice');
+  }
+
+  isOlder() {
+    const today= new Date(new Date().setHours(0, 0, 0, 0));
+    
+    return today.getTime() > new Date(this.slot.date).getTime();
+  }
 }
