@@ -63,6 +63,9 @@ import { LessonComponent } from './pages/lesson/lesson.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { SlotsComponent } from './pages/slots/slots.component';
 import { AddSlotDialogComponent } from './components/add-slot-dialog/add-slot-dialog.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { SlotCardComponent } from './components/slot-card/slot-card.component';
+import { PayDialogComponent } from './components/pay-dialog/pay-dialog.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -99,7 +102,9 @@ registerLocaleData(localeFr, 'fr');
     LessonComponent,
     ChatComponent,
     SlotsComponent,
-    AddSlotDialogComponent
+    AddSlotDialogComponent,
+    SlotCardComponent,
+    PayDialogComponent
   ],
     imports: [
         BrowserModule,
@@ -132,6 +137,7 @@ registerLocaleData(localeFr, 'fr');
         MatTooltipModule,
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot(),
+        NgxMaterialTimepickerModule
     ],
   providers: [
     AuthService,

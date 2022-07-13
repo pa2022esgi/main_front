@@ -1,0 +1,47 @@
+<div style="padding: 20px; border: solid 1px; border-radius: 10px; margin: 10px;">
+    <div style="display: flex;">
+        <div style="padding: 5px; border-radius: 5px; color: white; width: 100%; display: flex; align-items: center;" [ngStyle]="{'background-color': slot.paid ? 'var(--success)' : 'var(--error)'}">
+            {{slot.paid ? 'payé' : 'non payé'}}
+        </div>
+        <div style="width: 10%">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu>
+          <button mat-menu-item (click)="deleteSlot()" *ngIf="!slot.paid">
+            <mat-icon style="color: var(--error);">delete</mat-icon>
+            Supprimer
+          </button>
+          <button mat-menu-item (click)="pay()" *ngIf="auth.user!.role === 'élève' && !slot.paid">
+            <mat-icon>shopping_cart</mat-icon>
+            Payer
+          </button>
+          <button mat-menu-item *ngIf="slot.paid">
+            <mat-icon>picture_as_pdf</mat-icon>
+            Télécharger la facture
+          </button>
+        </mat-menu>
+        </div>
+    </div>
+    <div style="margin-top: 20px; display: flex; align-items: center;">
+        <mat-icon>event</mat-icon>
+        <span style="margin-left: 10px;">{{slot.date | date: "longDate"}}</span>
+    </div>
+    <div style="margin-top: 20px; display: flex; align-items: center;">
+        <mat-icon>schedule</mat-icon>
+        <span style="margin-left: 10px;">{{slot.start_time + ' - ' + slot.end_time}}</span>
+    </div>
+    <div style="margin-top: 20px; display: flex; align-items: center;">
+        <mat-icon>person</mat-icon>
+        <span style="margin-left: 10px" *ngIf="auth.user!.role === 'professeur'">{{slot.user.firstname ? (slot.user.firstname + ' ' + slot.user.lastname) : slot.user.email}}</span>
+        <span style="margin-left: 10px" *ngIf="auth.user!.role === 'élève'">{{slot.cours.user.firstname ? (slot.cours.user.firstname + ' ' + slot.cours.user.lastname) : slot.cours.user.email}}</span>
+    </div>
+    <div style="margin-top: 20px; display: flex; align-items: center;">
+        <mat-icon>{{slot.online ? 'video_camera_front' : 'pin_drop'}}</mat-icon>
+        <span style="margin-left: 10px">{{ slot.online ? 'En visioconférence' : 'Dans un lieu défini'}}</span>
+    </div>
+    <div style="margin-top: 20px; display: flex; align-items: center;">
+        <mat-icon>shopping_cart</mat-icon>
+        <span style="margin-left: 10px">{{ slot.paid ? slot.price : calculatePrice()}} €</span>
+    </div>
+</div>

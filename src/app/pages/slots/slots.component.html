@@ -1,10 +1,25 @@
 <div style="display: flex; justify-content: center;">
   <div style="width: 70vw; margin-top: 5vh;">
-    <button mat-flat-button (click)="addSlot()" style="width: 20vw; background-color: var(--success); color: white">
+    <button mat-flat-button (click)="addSlot()" style="width: 20vw; background-color: var(--success); color: white" [disabled]="!lesson" *ngIf="auth.user!.role === 'professeur'">
       Ajouter un créneau
     </button>
     <div style="margin-top: 5vh;">
-      <h2>Liste des créneaux</h2>
+      <div style="display: flex">
+        <div style="width: 100%; padding-top: 20px;">
+          <span style="font-weight: 600; font-size: 28px;">Liste des {{auth.user!.role === 'professeur' ? 'créneaux' : 'cours'}}</span>
+        </div>
+        <div style="width: 25%;">
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="type" name="role" (ngModelChange)="getSlots()">
+              <mat-option value="incoming">A venir</mat-option>
+              <mat-option value="all">Tous les créneaux</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div style="margin-top: 40px; display: flex; flex-wrap: wrap;">
+        <app-slot-card *ngFor="let slot of slots" [slot]="slot" style="flex: 0 0 33.33%;" (reload)="getSlots()"></app-slot-card>
+      </div>
     </div>
   </div>
 </div>

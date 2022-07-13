@@ -1,0 +1,50 @@
+<div style="display: flex; width: 100%">
+  <div style="margin-top: 5px">
+    <h1 mat-dialog-title>Paiement de {{ data.price }} €</h1>
+  </div>
+  <div style="margin-left: auto">
+    <button mat-icon-button (click)="close()" style="color: var(--error)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Numéro de la carte</mat-label>
+    <input matInput name="card" [(ngModel)]="paiement.card" type="number"/>
+    <mat-icon matSuffix>credit_card</mat-icon>
+  </mat-form-field>
+  <div style="display: flex">
+    <div style="width: 50%">
+      <mat-form-field appearance="outline" style="margin-right: 5px;">
+        <mat-label>Cryptogramme visuel</mat-label>
+        <input matInput name="crypto" [(ngModel)]="paiement.crypto" type="number"/>
+        <mat-icon matSuffix>pin</mat-icon>
+      </mat-form-field>
+    </div>
+    <div style="width: 50%">
+      <mat-form-field appearance="outline" style="margin-left: 5px;">
+        <mat-label *ngIf="paiement.date">Date de fin de validité</mat-label>
+        <input matInput [min]="today" [matDatepicker]="picker" name="date" readonly style="display: none;" [(ngModel)]="paiement.date">
+        <div>
+          {{(this.paiement.date | date: 'MMMM YYYY') || 'Date de fin de validité'}}
+        </div>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="multi-year" (monthSelected)="handleDate($event, picker)"></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Nom du titulaire</mat-label>
+    <input matInput name="name" [(ngModel)]="paiement.name" />
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+    <span style="color: red;" *ngIf="error">{{error}}</span>
+  </div>
+  <div style="display: flex; justify-content: center;">
+    <button mat-flat-button (click)="pay()" style="width: 20vw; background-color: var(--success); color: white">
+      Payer 🔒
+    </button>
+  </div>
+</div>

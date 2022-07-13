@@ -10,11 +10,64 @@
 </div>
 <div mat-dialog-content>
   <form>
+    <div style="display: flex;">
+      <div [ngStyle]="{'width': data.online ? '50%' : '100%'}">
+        <mat-form-field appearance="outline" style="margin-right: 5px;">
+          <mat-label>Date du créneau</mat-label>
+          <input matInput [matDatepicker]="picker" [min]="today" name="date" [(ngModel)]="slot.date" readonly>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div style="width: 50%; display: flex; justify-content: center; margin-top: 20px;" *ngIf="data.online">
+        <mat-slide-toggle [(ngModel)]="slot.online" name="visio">
+          En visioconférence
+        </mat-slide-toggle>
+      </div>
+    </div>
+    <div style="display: flex;">
+      <div style="width: 50%;">
+        <ng-template #cancelBtn>
+          <button mat-flat-button style="color: var(--dial-background-color)">
+            ANNULER
+          </button>
+        </ng-template>
+        <ng-template #confirmBtn>
+          <button mat-flat-button style="color: var(--dial-background-color)">
+            OK
+          </button>
+        </ng-template>
+        <mat-form-field appearance="outline" style="margin-right: 5px;">
+          <mat-label>Heure de début</mat-label>
+          <input matInput [ngxTimepicker]="timepick1" name="time-start" [(ngModel)]="slot.start_time" readonly [format]="24" [max]="slot.end_time">
+          <mat-icon matSuffix>schedule</mat-icon>
+          <ngx-material-timepicker #timepick1 [cancelBtnTmpl]="cancelBtn" [confirmBtnTmpl]="confirmBtn"></ngx-material-timepicker>
+        </mat-form-field>
+      </div>
+      <div style="width: 50%;">
+        <mat-form-field appearance="outline" style="margin-left: 5px;">
+          <mat-label>Heure de fin</mat-label>
+          <input matInput [ngxTimepicker]="timepick2" name="time-end" [(ngModel)]="slot.end_time" readonly [format]="24" [disabled]="!slot.start_time" [min]="slot.start_time">
+          <mat-icon matSuffix>schedule</mat-icon>
+          <ngx-material-timepicker #timepick2 [cancelBtnTmpl]="cancelBtn" [confirmBtnTmpl]="confirmBtn"></ngx-material-timepicker>
+        </mat-form-field>
+      </div>
+    </div>
     <mat-form-field appearance="outline">
-        <mat-label>date du créneau</mat-label>
-        <input matInput type="datetime-local" [matDatepicker]="picker" [min]="today" name="date" [(ngModel)]="data.date" readonly>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      <mat-label>Elève</mat-label>
+      <mat-select [(ngModel)]="slot.user" name="role">
+        <mat-option [value]="user._id" *ngFor="let user of users">{{user.firstname ? (user.firstname + ' ' + user.lastname) : user.email}}</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <div style="font-weight: 500; font-size: 20px; margin-left: 10px;">
+      Prix : {{calculatePrice()}} €
+    </div>
+    <div style="display: flex; margin-top: 20px; flex-direction: column;">
+      <span style="color: red; padding-bottom: 20px; margin: auto;" *ngIf="error">{{error}}</span>
+      <button mat-flat-button (click)="create()" style="width: 20vw; background-color: var(--success); color: white; margin: auto;">
+        Créer le créneau
+      </button>
+    </div>
   </form>
 </div>
