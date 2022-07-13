@@ -11,6 +11,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { CreateLessonComponent } from './pages/create-lesson/create-lesson.component';
 import { LessonComponent } from './pages/lesson/lesson.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { SlotsComponent } from './pages/slots/slots.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -48,7 +49,14 @@ const routes: Routes = [
     path: 'cours',
     component: CoursComponent,
   },
-  { path: '**', component: ErrorComponent },
+  {
+    path: 'slots',
+    component: SlotsComponent,
+  },
+  { 
+    path: '**', 
+    component: ErrorComponent 
+  },
 ];
 
 @NgModule({

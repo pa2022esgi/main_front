@@ -61,6 +61,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { TextEditorComponent } from './components/text-editor/text-editor.component';
 import { LessonComponent } from './pages/lesson/lesson.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { SlotsComponent } from './pages/slots/slots.component';
+import { AddSlotDialogComponent } from './components/add-slot-dialog/add-slot-dialog.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -95,7 +97,9 @@ registerLocaleData(localeFr, 'fr');
     CreateLessonComponent,
     TextEditorComponent,
     LessonComponent,
-    ChatComponent
+    ChatComponent,
+    SlotsComponent,
+    AddSlotDialogComponent
   ],
     imports: [
         BrowserModule,
