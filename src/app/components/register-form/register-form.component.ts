@@ -47,7 +47,9 @@ export class RegisterFormComponent implements OnInit {
             "email": res.user.email,
             "token": res.token,
             "role": res.user.role,
-            "id": res.user._id
+            "id": res.user._id,
+            "firstname": res.user.firstname,
+            "lastname": res.user.lastname,
           });
 
           this.authService.user = user;

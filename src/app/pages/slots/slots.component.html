@@ -6,13 +6,13 @@
     <div style="margin-top: 5vh;">
       <div style="display: flex">
         <div style="width: 100%; padding-top: 20px;">
-          <span style="font-weight: 600; font-size: 28px;">Liste des {{auth.user!.role === 'professeur' ? 'créneaux' : 'cours'}}</span>
+          <span style="font-weight: 600; font-size: 28px;">{{auth.user!.role === 'professeur' ? 'Liste des créneaux' : 'Liste de mes cours'}}</span>
         </div>
         <div style="width: 25%;">
           <mat-form-field appearance="outline">
             <mat-select [(ngModel)]="type" name="role" (ngModelChange)="getSlots()">
               <mat-option value="incoming">A venir</mat-option>
-              <mat-option value="all">Tous les créneaux</mat-option>
+              <mat-option value="all">{{auth.user!.role === 'professeur' ? 'Tous les créneaux' : 'Tous les cours'}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>

@@ -12,6 +12,7 @@ import { CreateLessonComponent } from './pages/create-lesson/create-lesson.compo
 import { LessonComponent } from './pages/lesson/lesson.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { SlotsComponent } from './pages/slots/slots.component';
+import { VisioComponent } from './pages/visio/visio.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'slots',
     component: SlotsComponent,
+  },
+  {
+    path: 'visio/:id',
+    component: VisioComponent,
   },
   { 
     path: '**', 

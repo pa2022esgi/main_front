@@ -20,6 +20,10 @@
             <mat-icon>picture_as_pdf</mat-icon>
             Télécharger la facture
           </button>
+          <button mat-menu-item *ngIf="slot.online && slot.paid && isToday()" (click)="toVisio()">
+            <mat-icon>video_camera_front</mat-icon>
+            Accéder à la visioconférence
+          </button>
         </mat-menu>
         </div>
     </div>
