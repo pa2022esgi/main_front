@@ -9,14 +9,13 @@ const URL = "http://localhost:3000";
 })
 export class CommentService {
 
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient) { }
 
-  getComments(id: string) {
-    return this.http.get(URL + '/lessons/' + id + '/comments');
-  }
-
-  addComment(id: string, comment: string) {
-    return this.http.post(URL + '/lessons/' + id + '/comments', { comment });
+  addComment(id: string, comment: any) {
+    return this.http.post(URL + '/lessons/' + id + '/comments', {
+      "text": comment.text,
+      "rating": comment.rating
+    });
   }
 
   delComment(id: string) {

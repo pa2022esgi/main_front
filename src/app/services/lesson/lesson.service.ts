@@ -26,8 +26,8 @@ export class LessonService {
     return this.http.get(URL + '/users/' + this.auth.user?.id + '/cours');
   }
 
-  getLesson(id: string) {
-    return this.http.get(URL + '/cours/' + id);
+  getLesson(id: string, user: string | null) {
+    return this.http.get(URL + '/cours/' + id + "?user=" + user);
   }
 
   updateLesson(lesson: any) {

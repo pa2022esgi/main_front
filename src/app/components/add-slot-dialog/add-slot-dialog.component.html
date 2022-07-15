@@ -64,7 +64,7 @@
       Prix : {{calculatePrice()}} €
     </div>
     <div style="display: flex; margin-top: 20px; flex-direction: column;">
-      <span style="color: red; padding-bottom: 20px; margin: auto;" *ngIf="error">{{error}}</span>
+      <span style="color: var(--error); padding-bottom: 20px; margin: auto;" *ngIf="error">{{error}}</span>
       <button mat-flat-button (click)="create()" style="width: 20vw; background-color: var(--success); color: white; margin: auto;">
         Créer le créneau
       </button>

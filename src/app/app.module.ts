@@ -68,6 +68,8 @@ import { SlotCardComponent } from './components/slot-card/slot-card.component';
 import { PayDialogComponent } from './components/pay-dialog/pay-dialog.component';
 import { VisioComponent } from './pages/visio/visio.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import { StarRatingModule } from 'angular-star-rating';
+import { CommentComponent } from './components/comment/comment.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -108,7 +110,8 @@ registerLocaleData(localeFr, 'fr');
     SlotCardComponent,
     PayDialogComponent,
     VisioComponent,
-    CommentsComponent
+    CommentsComponent,
+    CommentComponent
   ],
     imports: [
         BrowserModule,
@@ -141,7 +144,8 @@ registerLocaleData(localeFr, 'fr');
         MatTooltipModule,
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot(),
-        NgxMaterialTimepickerModule
+        NgxMaterialTimepickerModule,
+        StarRatingModule.forRoot()
     ],
   providers: [
     AuthService,

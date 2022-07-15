@@ -20,10 +20,13 @@ export class LessonComponent implements OnInit {
   }
 
   getLesson() {
-    this.service.getLesson(this.id!).subscribe({
+    let user: string | null = null
+    if (this.auth.user) {
+      user = this.auth.user.id
+    }
+    this.service.getLesson(this.id!, user).subscribe({
       next: (res: any) => {
         this.lesson = res;
-        console.log(res);
       }
     });
   }
@@ -34,5 +37,18 @@ export class LessonComponent implements OnInit {
     } else {
       this.router.navigate(['/chat'], {queryParams : {'user-id': this.lesson.user._id}});
     }
-  }  
+  } 
+
+  calculateRating() {
+    let rating = 0;
+
+    if (this.lesson.comments) {
+      this.lesson.comments.forEach((comment: any )=> {
+        rating += comment.rating;
+      });
+    }
+    
+    return rating / this.lesson.comments.length;
+  }
+  
 }

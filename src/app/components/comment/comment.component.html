@@ -1,0 +1,25 @@
+<div class="comment-div" style="margin-top: 25px;">
+  <div style="display: flex;">
+    <div style="flex-grow: 1; max-width: 50px;">
+      <img src="{{comment.user.profile_img ? comment.user.profile_img.url : '../../../assets/profile.png'}}" class="avatar">
+    </div>
+    <div style="margin-left: 15px; display: flex; align-items: center;">
+      <div>
+        <div style="margin-left: 8px;">
+          <span>{{comment.user.firstname ? (comment.user.firstname + ' ' + comment.user.lastname) : comment.user.email}} - {{comment.createdAt | date: 'dd/MM/yyyy'}}</span>
+        </div>
+        <div style="display: flex; justify-content: start; margin-top: 5px;">
+          <star-rating size="medium" [readOnly]="true" [rating]="comment.rating"></star-rating>
+        </div>
+      </div>
+    </div>
+    <div style="margin-left: auto;">
+    <button mat-icon-button (click)="deleteComment(comment._id)" *ngIf="auth.user && auth.user.id === comment.user._id">
+      <mat-icon style="color: var(--error);">delete</mat-icon>
+    </button>
+  </div>
+  </div>
+  <div style="margin-top: 10px;" *ngIf="comment.text">
+    <span>{{comment.text}}</span>
+  </div>
+</div>

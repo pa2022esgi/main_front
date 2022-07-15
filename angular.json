@@ -29,6 +29,7 @@
             "styles": [
               "src/theme.scss",
               "src/styles.css",
+              "src/styles.scss",
               "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
               "./node_modules/froala-editor/css/froala_style.min.css"
             ],
@@ -98,6 +99,7 @@
             "styles": [
               "src/theme.scss",
               "src/styles.css",
+              "src/styles.scss",
               "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
               "./node_modules/froala-editor/css/froala_style.min.css"
             ],

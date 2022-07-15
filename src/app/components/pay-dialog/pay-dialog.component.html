@@ -40,7 +40,7 @@
     <mat-icon matSuffix>person</mat-icon>
   </mat-form-field>
   <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-    <span style="color: red;" *ngIf="error">{{error}}</span>
+    <span style="color: var(--error);" *ngIf="error">{{error}}</span>
   </div>
   <div style="display: flex; justify-content: center;">
     <button mat-flat-button (click)="pay()" style="width: 20vw; background-color: var(--success); color: white">

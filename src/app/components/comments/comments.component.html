@@ -1,19 +1,27 @@
 <div>
   <div style="font-size: 25px; font-weight: 500">Avis et commentaires</div>
-  <div style="margin-top: 25px;">
+  <div style="margin-top: 25px;" *ngIf="auth.user && auth.user.role === 'élève' && lesson.canComment">
     <div style="display: flex;">
       <div style="width: 50%">
-
-      </div>
-      <div style="width: 50%">
-        <button mat-flat-button (click)="send()" style="width: 20vw; background-color: var(--success); color: white">
-          Envoyer
+        <button mat-flat-button (click)="send()" style="width: 100%; background-color: var(--success); color: white">
+          Laisser un avis
         </button>
       </div>
+      <div style="width: 50%; display: flex; align-items: center; justify-content: center;">
+        <star-rating size="large" [hoverEnabled]="true" (ratingChange)="comment.rating = $event.rating"></star-rating>
+      </div>
     </div>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" style="margin-top: 15px">
       <mat-label>Commentaire (facultatif)</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput [(ngModel)]="comment.text"></textarea>
     </mat-form-field>
+    <div style="display: flex; justify-content: center;">
+      <span style="color: var(--error);" *ngIf="error">{{error}}</span>
+    </div>
+  </div>
+  <div>
+    <div *ngFor="let comment of lesson.comments.reverse()" style="margin-top: 25px;">
+      <app-comment [comment]="comment" (reload)="reload.emit()" style="margin-top: 25px;"></app-comment>
+    </div>
   </div>
 </div>

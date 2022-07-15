@@ -5,9 +5,9 @@
         <div style="font-size: 50px; font-weight: 600;">{{ lesson.name }}</div>
         <div style="font-size: 25px; margin-top: 10px;">{{lesson.user.firstname + ' ' + lesson.user.lastname}}</div>
         <div style="font-size: 16px; margin-top: 10px; font-style: italic;">{{lesson.user.address}}</div>
-        <div style="font-size: 25px; margin-top: 10px;">
-          <span>★★★★☆</span>
-          <span>&nbsp;(... avis)</span>
+        <div style="font-size: 20px; margin-top: 10px; display: flex;" *ngIf="lesson.comments.length > 0">
+          <star-rating size="medium" [readOnly]="true" [rating]="calculateRating()" [showHalfStars]="true" style="margin-top: 2px;"></star-rating>
+          <span>&nbsp;({{lesson.comments.length}} avis)</span>
         </div>
       </div>
       <div style="display: flex; align-items: center; flex-grow: 1; min-width: 150px;">
@@ -25,11 +25,11 @@
         <span style="font-weight: bold; font-size: 22px; margin-left: 50px;">{{lesson.price}} € / h</span>
       </div>
     </div>
-    <!-- <div style="margin-top: 25px;">
-      <div [froalaView]="lesson.text"></div>
-    </div> -->
     <div style="margin-top: 25px;">
-      <app-comments [lesson]="lesson"></app-comments>
+      <div [froalaView]="lesson.text"></div>
+    </div>
+    <div style="margin-top: 25px;">
+      <app-comments [lesson]="lesson" (reload)="getLesson()"></app-comments>
     </div>
   </div>
 </div>
