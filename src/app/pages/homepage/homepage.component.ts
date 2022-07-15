@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SwiperOptions } from 'swiper';
+import { Router } from '@angular/router';
+import { CommentService } from 'src/app/services/comment/comment.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,23 +8,28 @@ import { SwiperOptions } from 'swiper';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  comments: any[] = [];
+  slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
+  slides = [
+    {img: "http://placehold.it/350x150"},
+    {img: "http://placehold.it/350x150"},
+    {img: "http://placehold.it/350x150"},
+    {img: "http://placehold.it/350x150"}
+  ];
 
-  constructor() { }
+  constructor(private commentServ: CommentService, private router: Router) { }
 
   ngOnInit(): void {
-
+    this.getComments();
   }
 
-  config: SwiperOptions = {
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    },
-    spaceBetween: 30
-  };
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
 
+  getComments() {
+    this.commentServ.popularComments().subscribe((res: any) => {
+      this.comments = res;
+    });
+  }
 }

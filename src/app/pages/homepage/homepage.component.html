@@ -1,60 +1,50 @@
 <div class="homepage-head">
-  <div style="width: 500px;margin: 0 auto 32px;">
-    <h3>SITE DE COURS</h3>
-    <p class="comment" style="margin: 0;">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
-    <p class="comment" style="margin: 0;">"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
-  </div>
-</div>
-
-<swiper [config]="config">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <app-teacher-card></app-teacher-card>
-      ok
+  <div style="width: 100%; backdrop-filter: blur(2px); display: flex; justify-content: center; padding-top: 100px; padding-bottom: 100px;">
+    <div style="width: 50vw;">
+      <div style="font-size: 30px; font-weight: 600;">MY CLASSES</div>
+      <div style="margin-top: 30px; font-size: 25px;">Trouvez votre professeur particulier parmi plus de 250 000 annonces de cours particuliers à domicile dans 500 matières sur toute la France.</div>
     </div>
   </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</swiper>
-
-<!-- <div style="width: 1024px;margin: 16px auto 0;display: flex;justify-content: space-between;">
-  <app-teacher-card></app-teacher-card>
-  <app-teacher-card></app-teacher-card>
-  <app-teacher-card></app-teacher-card>
-</div> -->
-
-<div class="select-wrap">
-  <div class="select">
-    <h3>Devenir Etudiant</h3>
-    <p>Lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod temporncididunt ut labore et dolore magna aliquaUt enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquidex ea commodo consequat, Duis aute iruredolor in reprehenderit in voluptate</p>
-    <button mat-button class="btn1">S'INSCRIRE</button>
-  </div>
-  <div class="line"></div>
-  <div class="select">
-    <h3>Devenir Etudiant</h3>
-    <p>Lorem ipsum dolor sit amet, consecteturadipiscing elit, sed do eiusmod temporncididunt ut labore et dolore magna aliquaUt enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquidex ea commodo consequat, Duis aute iruredolor in reprehenderit in voluptate</p>
-    <button mat-button class="btn2">S'INSCRIRE</button>
+</div>
+<div style="display: flex; justify-content: center; margin-top: 50px;">
+  <div style="width: 65vw; display: flex; border-radius: 10px; background: rgba(33, 150, 243, 0.1); padding: 25px;">
+    <div style="width: 50%; display: flex; flex-direction: column;">
+      <div style="text-align: center; font-size: 25px; font-weight: 500;">
+        Devenir étudiant
+      </div>
+      <div style="margin-top: 25px; padding: 20px; text-align: justify; font-size: 18px; flex-grow: 1; line-height: 150%;">
+        Devenez étudiant de notre plateforme et profitez de nos services pour trouver votre professeur personnel. Des mathématiques à la danse en passant par la cuisine venez trouver le cours qui corresponds à vos envies !
+      </div>
+      <button mat-flat-button (click)="goToLogin()" style="width: 20vw; background-color: var(--info); color: white; margin: auto; margin-top: 25px;">
+        S'INSCRIRE
+      </button>
+    </div>
+    <div style="width: 50%; display: flex; flex-direction: column;">
+      <div style="text-align: center; font-size: 25px; font-weight: 500;">
+        Devenir professeur
+      </div>
+      <div style="margin-top: 25px; padding: 20px; text-align: justify; font-size: 18px; flex-grow: 1; line-height: 150%;">
+        Vous êtes professeur et vous souhaitez former des étudiants ? Vous pouvez vous inscrire sur notre plateforme et déposer votre annonces de cours. En visio ou sur place donner des cours et gagner votre vie grace à My classes !
+      </div>
+      <button mat-flat-button (click)="goToLogin()" style="width: 20vw; background-color: var(--info); color: white; margin: auto; margin-top: 25px;">
+        S'INSCRIRE
+      </button>
+    </div>
   </div>
 </div>
 
-<div class="user-wrpa">
-  <div class="user-item">
-    <img src="../../../assets/profile.png" alt="">
-    <p>Nom Prenom</p>
-    <div class="star">★★★★☆</div>
-    <p class="desc">Lorem ipsum dolor sit amet，concerteturadiscing elit，sed do eiusmod temporex ea commodo consequeat Duis aute iruredolor in reprehenderit involptate</p>
-  </div>
-  <div class="user-item">
-    <img src="../../../assets/profile.png" alt="">
-    <p>Nom Prenom</p>
-    <div class="star">★★★★☆</div>
-    <p class="desc">Lorem ipsum dolor sit amet，concerteturadiscing elit，sed do eiusmod temporex ea commodo consequeat Duis aute iruredolor in reprehenderit involptate</p>
-  </div>
-  <div class="user-item">
-    <img src="../../../assets/profile.png" alt="">
-    <p>Nom Prenom</p>
-    <div class="star">★★★★☆</div>
-    <p class="desc">Lorem ipsum dolor sit amet，concerteturadiscing elit，sed do eiusmod temporex ea commodo consequeat Duis aute iruredolor in reprehenderit involptate</p>
-  </div>
+<div style="display: flex; justify-content: center; margin-top: 50px; margin-bottom: 120px;">
+  <div style="width: 80vw; display: flex; flex-wrap: wrap; justify-content: space-evenly">
+    <div *ngFor="let comment of comments" style="flex: 0 0 25%; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; padding: 20px; border-radius: 20px; margin: 10px;">
+      <div style="display: flex; justify-content: center">
+        <img src="{{comment.user.profile_img ? comment.user.profile_img.url : '../../../assets/profile.png'}}" class="avatar">
+      </div>
+      <div style="margin-top: 15px;">
+        <star-rating size="medium" [readOnly]="true" [rating]="comment.rating"></star-rating>
+      </div>
+      <div *ngIf="comment.text" style="text-align: center; margin-top: 25px;">
+        {{comment.text}}
+      </div>
+    </div>
+  </div>  
 </div>

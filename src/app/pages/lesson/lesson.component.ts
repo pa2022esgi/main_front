@@ -47,8 +47,8 @@ export class LessonComponent implements OnInit {
         rating += comment.rating;
       });
     }
-    
-    return rating / this.lesson.comments.length;
+
+    return (rating / this.lesson.comments.length).toFixed(2);
   }
   
 }

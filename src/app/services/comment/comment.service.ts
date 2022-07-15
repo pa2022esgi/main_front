@@ -21,4 +21,8 @@ export class CommentService {
   delComment(id: string) {
     return this.http.delete(URL + '/comments/' + id);
   }
+
+  popularComments() {
+    return this.http.get(URL + '/comments/popular');
+  }
 }

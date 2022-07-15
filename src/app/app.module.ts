@@ -36,7 +36,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TeacherMenuComponent } from './components/teacher-menu/teacher-menu.component';
 import { StudentMenuComponent } from './components/student-menu/student-menu.component';
 import { FormsModule } from '@angular/forms';
-import { SwiperModule } from 'swiper/angular';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { ChangeInfoComponent } from './components/change-info/change-info.component';
@@ -133,7 +132,6 @@ registerLocaleData(localeFr, 'fr');
         MatTableModule,
         MatPaginatorModule,
         HttpClientModule,
-        SwiperModule,
         MatGridListModule,
         MatProgressSpinnerModule,
         MatDatepickerModule,
