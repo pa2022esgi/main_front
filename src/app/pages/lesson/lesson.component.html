@@ -17,7 +17,7 @@
       </div>
     </div>
     <div style="margin-top: 25px; display: flex;">
-      <button mat-flat-button style="width: 25vw; background-color: var(--info); color: white; margin-right: 10px;" (click)="contact()" *ngIf="!(auth.user && auth.user.role !== 'élève')">
+      <button mat-flat-button style="width: 25vw; background-color: var(--info); color: white; margin-right: 10px;" (click)="contact()" *ngIf="!(auth.user && auth.user.role !== 'élève') && lesson.available">
         Contacter ce professeur
       </button>
       <div style="display: flex; align-items:center;">
@@ -25,8 +25,11 @@
         <span style="font-weight: bold; font-size: 22px; margin-left: 50px;">{{lesson.price}} € / h</span>
       </div>
     </div>
-    <div style="margin-top: 25px;">
+    <!-- <div style="margin-top: 25px;">
       <div [froalaView]="lesson.text"></div>
+    </div> -->
+    <div style="margin-top: 25px;">
+      <app-comments [lesson]="lesson"></app-comments>
     </div>
   </div>
 </div>

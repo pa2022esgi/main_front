@@ -82,4 +82,8 @@ export class SlotCardComponent implements OnInit {
   toVisio() {
     this.router.navigate(['/visio', this.slot._id]);
   }
+
+  toLesson() {
+    this.router.navigate(['/lesson', this.slot.cours._id]);
+  }
 }

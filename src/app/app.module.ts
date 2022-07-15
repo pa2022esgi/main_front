@@ -67,6 +67,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { SlotCardComponent } from './components/slot-card/slot-card.component';
 import { PayDialogComponent } from './components/pay-dialog/pay-dialog.component';
 import { VisioComponent } from './pages/visio/visio.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -106,7 +107,8 @@ registerLocaleData(localeFr, 'fr');
     AddSlotDialogComponent,
     SlotCardComponent,
     PayDialogComponent,
-    VisioComponent
+    VisioComponent,
+    CommentsComponent
   ],
     imports: [
         BrowserModule,

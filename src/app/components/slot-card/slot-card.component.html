@@ -24,6 +24,10 @@
             <mat-icon>video_camera_front</mat-icon>
             Accéder à la visioconférence
           </button>
+          <button mat-menu-item *ngIf="auth.user!.role === 'élève'" (click)="toLesson()">
+            <mat-icon>design_services</mat-icon>
+            Voir le cours
+          </button>
         </mat-menu>
         </div>
     </div>

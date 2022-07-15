@@ -32,7 +32,6 @@ export class VisioComponent implements OnInit, AfterViewInit {
       roomName: this.room,
       width: '100%',
       height: '100%',
-      configOverwrite: { prejoinPageEnabled: false },
       parentNode: document.querySelector('#jitsi-iframe'),
       userInfo: {
         displayName: this.user.name,

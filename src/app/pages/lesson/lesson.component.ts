@@ -23,6 +23,7 @@ export class LessonComponent implements OnInit {
     this.service.getLesson(this.id!).subscribe({
       next: (res: any) => {
         this.lesson = res;
+        console.log(res);
       }
     });
   }
