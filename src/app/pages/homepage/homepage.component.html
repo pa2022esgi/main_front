@@ -15,10 +15,11 @@
       <div style="margin-top: 25px; padding: 20px; text-align: justify; font-size: 18px; flex-grow: 1; line-height: 150%;">
         Devenez étudiant de notre plateforme et profitez de nos services pour trouver votre professeur personnel. Des mathématiques à la danse en passant par la cuisine venez trouver le cours qui corresponds à vos envies !
       </div>
-      <button mat-flat-button (click)="goToLogin()" style="width: 20vw; background-color: var(--info); color: white; margin: auto; margin-top: 25px;">
+      <button mat-flat-button (click)="goToLogin()" style="width: 20vw; background-color: var(--info); color: white; margin: auto; margin-top: 25px;" *ngIf="!auth.user">
         S'INSCRIRE
       </button>
     </div>
+    <mat-divider [vertical]="true" style="margin-left: 10px; margin-right: 10px;"></mat-divider>
     <div style="width: 50%; display: flex; flex-direction: column;">
       <div style="text-align: center; font-size: 25px; font-weight: 500;">
         Devenir professeur
@@ -26,7 +27,7 @@
       <div style="margin-top: 25px; padding: 20px; text-align: justify; font-size: 18px; flex-grow: 1; line-height: 150%;">
         Vous êtes professeur et vous souhaitez former des étudiants ? Vous pouvez vous inscrire sur notre plateforme et déposer votre annonces de cours. En visio ou sur place donner des cours et gagner votre vie grace à My classes !
       </div>
-      <button mat-flat-button (click)="goToLogin()" style="width: 20vw; background-color: var(--info); color: white; margin: auto; margin-top: 25px;">
+      <button mat-flat-button (click)="goToLogin()" style="width: 20vw; background-color: var(--info); color: white; margin: auto; margin-top: 25px;" *ngIf="!auth.user">
         S'INSCRIRE
       </button>
     </div>
