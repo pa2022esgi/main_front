@@ -69,6 +69,8 @@ import { CommentsListComponent } from './components/comments-list/comments-list.
 import { CommentsPageComponent } from './pages/comments-page/comments-page.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { TransactionsListComponent } from './components/transactions-list/transactions-list.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { ChartsComponent } from './components/charts/charts.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -111,6 +113,7 @@ registerLocaleData(localeFr, 'fr');
     CommentsPageComponent,
     TransactionsComponent,
     TransactionsListComponent,
+    ChartsComponent,
   ],
     imports: [
         BrowserModule,
@@ -143,7 +146,8 @@ registerLocaleData(localeFr, 'fr');
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot(),
         NgxMaterialTimepickerModule,
-        StarRatingModule.forRoot()
+        StarRatingModule.forRoot(),
+        NgApexchartsModule
     ],
   providers: [
     AuthService,

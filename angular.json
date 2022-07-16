@@ -31,7 +31,8 @@
               "src/styles.css",
               "src/styles.scss",
               "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
-              "./node_modules/froala-editor/css/froala_style.min.css"
+              "./node_modules/froala-editor/css/froala_style.min.css",
+              "./node_modules/apexcharts/dist/apexcharts.min.js"
             ],
             "scripts": [
             ]
@@ -102,7 +103,8 @@
               "src/styles.css",
               "src/styles.scss",
               "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
-              "./node_modules/froala-editor/css/froala_style.min.css"
+              "./node_modules/froala-editor/css/froala_style.min.css",
+              "./node_modules/apexcharts/dist/apexcharts.min.js"
             ],
             "scripts": [
             ]

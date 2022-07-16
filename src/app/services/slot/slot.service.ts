@@ -32,7 +32,7 @@ export class SlotService {
     return this.http.put(URL + '/slots/' + slotId + '/pay', {});
   }
 
-  getAllSlots() {
-    return this.http.get(URL + '/slots');
+  getAllSlots(groupBy:boolean = false) {
+    return this.http.get(URL + '/slots?groupBy=' + groupBy);
   }
 }
