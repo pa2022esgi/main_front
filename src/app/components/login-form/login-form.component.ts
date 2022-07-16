@@ -43,7 +43,12 @@ export class LoginFormComponent implements OnInit {
 
           this.authService.user = user;
           localStorage.setItem('user', JSON.stringify(user));
-          this.router.navigate(['/profil']);
+          
+          if (user.role === 'administrateur') {
+            this.router.navigate(['/admin/users']);
+          } else {
+            this.router.navigate(['/profil']);
+          }
         }, 
         error: (err: any) => {
           this.error = err.error.msg;

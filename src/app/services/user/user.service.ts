@@ -8,23 +8,8 @@ const URL = 'http://localhost:3000/users';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  createUser(user: any) {
-    return this.http.post(URL + '/', {
-      firstname: user.firstname,
-      role: user.role,
-      email: user.email,
-      password: user.password,
-      address: user.address,
-      phone: user.phone,
-    });
-  }
-
   getAllUsers() {
     return this.http.get(URL + '/');
-  }
-
-  deleteUserByID(id: string) {
-    return this.http.delete(URL + '/' + id);
   }
 
   validateUser(id: string, validated: boolean) {

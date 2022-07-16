@@ -31,4 +31,8 @@ export class SlotService {
   paySlot(slotId: string) {
     return this.http.put(URL + '/slots/' + slotId + '/pay', {});
   }
+
+  getAllSlots() {
+    return this.http.get(URL + '/slots');
+  }
 }

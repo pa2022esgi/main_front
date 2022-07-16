@@ -1,6 +1,7 @@
 export enum UserRole {
   Teacher="professeur",
-  Student="élève"
+  Student="élève",
+  Admin="administrateur"
 }
 
 export class User {

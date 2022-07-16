@@ -25,4 +25,8 @@ export class CommentService {
   popularComments() {
     return this.http.get(URL + '/comments/popular');
   }
+
+  getComments() {
+    return this.http.get(URL + '/comments');
+  }
 }

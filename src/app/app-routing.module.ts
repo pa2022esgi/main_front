@@ -4,7 +4,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { CoursComponent } from './pages/cours/cours.component';
 
-import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { ErrorComponent } from './pages/error/error.component';
@@ -13,6 +12,8 @@ import { LessonComponent } from './pages/lesson/lesson.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { SlotsComponent } from './pages/slots/slots.component';
 import { VisioComponent } from './pages/visio/visio.component';
+import { CommentsPageComponent } from './pages/comments-page/comments-page.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -23,12 +24,16 @@ const routes: Routes = [
     component: ProfilComponent,
   },
   {
-    path: 'admin',
-    component: AdminHomeComponent,
-  },
-  {
     path: 'admin/users',
     component: UsersComponent,
+  },
+  {
+    path: 'admin/comments',
+    component: CommentsPageComponent,
+  },
+  {
+    path: 'admin/transactions',
+    component: TransactionsComponent,
   },
   {
     path: 'my-lesson',

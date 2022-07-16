@@ -13,7 +13,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { SidenavContentComponent } from './components/sidenav-content/sidenav-content.component';
@@ -22,9 +21,6 @@ import { UsersComponent } from './pages/users/users.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { PaginatorComponent } from './components/paginator/paginator.component';
-import { UserSearchComponent } from './components/user-search/user-search.component';
-import { AddUserButtonComponent } from './components/add-user-button/add-user-button.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { TeacherCardComponent } from './components/teacher-card/teacher-card.component';
@@ -69,6 +65,10 @@ import { VisioComponent } from './pages/visio/visio.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { CommentComponent } from './components/comment/comment.component';
+import { CommentsListComponent } from './components/comments-list/comments-list.component';
+import { CommentsPageComponent } from './pages/comments-page/comments-page.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { TransactionsListComponent } from './components/transactions-list/transactions-list.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -79,13 +79,9 @@ registerLocaleData(localeFr, 'fr');
     LoginFormComponent,
     RegisterFormComponent,
     NavbarComponent,
-    AdminHomeComponent,
     SidenavContentComponent,
     UsersComponent,
     UsersListComponent,
-    PaginatorComponent,
-    UserSearchComponent,
-    AddUserButtonComponent,
     NavbarComponent,
     HomepageComponent,
     TeacherCardComponent,
@@ -110,7 +106,11 @@ registerLocaleData(localeFr, 'fr');
     PayDialogComponent,
     VisioComponent,
     CommentsComponent,
-    CommentComponent
+    CommentComponent,
+    CommentsListComponent,
+    CommentsPageComponent,
+    TransactionsComponent,
+    TransactionsListComponent,
   ],
     imports: [
         BrowserModule,

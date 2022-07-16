@@ -13,7 +13,6 @@ export class UsersListComponent implements OnInit {
   constructor(private userService: UserService, public dialog: MatDialog) { }
 
   @Input() users_list: Array<any> = [];
-  @Output() reload = new EventEmitter<void>();
 
   headers: string[] = ['name', 'email', 'role', 'validation', 'actions'];
 
@@ -21,12 +20,6 @@ export class UsersListComponent implements OnInit {
 
   handleValidate(id: string, $event: boolean) {
     this.userService.validateUser(id, $event).subscribe();
-  }
-
-  deleteUser(id: string) {
-    this.userService.deleteUserByID(id).subscribe(() => {
-      this.reload.emit();
-    });
   }
 
   dialogInfo(element: any) {

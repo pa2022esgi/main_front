@@ -1,0 +1,15 @@
+<div style="width: 75%; margin: auto; margin-top: 50px;">
+    <div style="margin-bottom: 50px; font-size: 20px; font-weight: 500;">Liste des transactions</div>
+    <div style="display: flex; justify-content: space-evenly" *ngIf="slots">
+        <div style="width: 50%; text-align: center; font-size: 20px;">
+            Montant total : {{ getTotal().toFixed(2) }} €
+        </div>
+        <div style="width: 50%; text-align: center; font-size: 20px;">
+            Gain Total : {{ (getTotal()*20/100).toFixed(2) }} €
+        </div>
+    </div>
+    <div style="margin-top: 30px;">
+        <app-transactions-list [transactions]="slots"></app-transactions-list>
+    </div>
+</div>
+

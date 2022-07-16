@@ -1,10 +1,10 @@
 <mat-drawer-container autosize>
-  <app-navbar *ngIf="!admin"></app-navbar>
-  <mat-drawer *ngIf="admin" mode="side" opened>
+  <app-navbar *ngIf="!auth.user || auth.user && auth.user.role !== 'administrateur'"></app-navbar>
+  <mat-drawer *ngIf="auth.user && auth.user.role === 'administrateur'" mode="side" opened>
     <app-sidenav-content></app-sidenav-content>
   </mat-drawer>
   <div style="margin-bottom: 100px;">
     <router-outlet></router-outlet>
   </div>
-  <app-foot></app-foot>
+  <app-foot *ngIf="!auth.user || auth.user && auth.user.role !== 'administrateur'"></app-foot>
 </mat-drawer-container>
