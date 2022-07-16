@@ -37,18 +37,6 @@ export class LessonComponent implements OnInit {
     } else {
       this.router.navigate(['/chat'], {queryParams : {'user-id': this.lesson.user._id}});
     }
-  } 
-
-  calculateRating() {
-    let rating = 0;
-
-    if (this.lesson.comments) {
-      this.lesson.comments.forEach((comment: any )=> {
-        rating += comment.rating;
-      });
-    }
-
-    return (rating / this.lesson.comments.length).toFixed(2);
   }
   
 }

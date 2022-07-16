@@ -13,7 +13,8 @@ export class ChatComponent implements OnInit {
   chats: any[] = [];
   message: string = '';
   error: string | null = null;
-  selecteds : any[] = []; 
+  selecteds : any[] = [];
+  instance: any;
 
   constructor(private chat: ChatService, private route: ActivatedRoute, public auth: AuthService) {}
 
@@ -21,23 +22,32 @@ export class ChatComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
         if (params['user-id']) {
           this.createChat(params['user-id']);
-        };
+        }else {
+          this.getChats();
+        }
     });
 
-    this.getChats();
+    this.instance = this.chat.getNewMessage().subscribe((message: any) => {
 
-    this.chat.getNewMessage().subscribe((message: any) => {
       if (message !== "") {
         const chat = this.chats.find(chat => chat._id === message.chat._id);
         if (chat) {
           if (chat._id === this.selecteds[0]) {
-            this.messages.push(message.msg);
+            const found: any = this.messages.find((msg: any) => msg._id === message.msg._id);
+
+            if (!found) {
+              this.messages.push(message.msg);
+            }
           }
         } else {
           this.getChats();
         }
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.instance.unsubscribe();
   }
 
   sendMessage() {
@@ -55,7 +65,9 @@ export class ChatComponent implements OnInit {
       next: (res: any) => {
         this.getChats();
       },
-      error: (err: any) => {},
+      error: (err: any) => {
+        this.getChats();
+      },
     });
   }
 

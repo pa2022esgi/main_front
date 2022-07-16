@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatSelectModule} from "@angular/material/select";
+import { LessonService } from 'src/app/services/lesson/lesson.service';
 
 @Component({
   selector: 'app-cours',
@@ -7,12 +7,27 @@ import {MatSelectModule} from "@angular/material/select";
   styleUrls: ['./cours.component.css'],
 })
 export class CoursComponent implements OnInit {
-  num = 7;
-  selected: any;
+  sortBy: string | null = null;
+  searchQuery: string | null = null;
+  online: boolean = false;
+  lessons: any[] = [];
 
-  constructor() { }
+  constructor(private lessonServ: LessonService) { }
 
   ngOnInit(): void {
+    this.search();
   }
 
+  search() {
+    this.lessonServ.getLessons(this.sortBy, this.searchQuery, this.online).subscribe((res: any) => {
+      this.lessons = res;
+    });
+  }
+
+  reset() {
+    this.sortBy = null;
+    this.searchQuery = null;
+    this.online = false;
+    this.search();
+  }
 }

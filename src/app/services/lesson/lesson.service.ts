@@ -30,6 +30,14 @@ export class LessonService {
     return this.http.get(URL + '/cours/' + id + "?user=" + user);
   }
 
+  getLessons(sortBy: string | null, searchQuery: string | null, online: boolean) {
+    return this.http.get(URL + '/cours?sortBy=' + sortBy + "&search=" + searchQuery + "&online=" + online);
+  }
+
+  getPopularLessons() {
+    return this.http.get(URL + '/cours/popular');
+  }
+
   updateLesson(lesson: any) {
     return this.http.put(URL + '/cours/' + lesson._id, {
       "name" : lesson.name,

@@ -1,41 +1,45 @@
-<div class="page-cours">
-  <div class="filter">
-    <span class="titre">Trier par:</span>
-    <span class="kkk">Proche de chez yous</span>
-    <span class="kkk">Tarif</span>
-    <span class="kkk">Avis</span>
-
-    <div class="reinit">
-      <button mat-icon-button aria-label="">
-        <mat-icon>autorenew</mat-icon>
-      </button>
-      <span>Réinitialiser</span>
+<div style="display: flex; justify-content: center;">
+  <div style="width: 75vw">
+    <div style="margin-top: 5vh;">
+      <div style="display: flex;">
+        <mat-form-field appearance="outline" style="width: 40%; margin-right: 10px;">
+          <mat-label>Trier par ...</mat-label>
+          <mat-select [(ngModel)]="sortBy" name="role">
+            <mat-select-trigger>
+              {{sortBy === 'price' ? 'Tarif' : 'Note'}}
+            </mat-select-trigger>
+            <mat-option value="price"><mat-icon>euro</mat-icon>Tarif</mat-option>
+            <mat-option value="rating"><mat-icon>star</mat-icon>Note</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>sort</mat-icon>
+        </mat-form-field>
+        <div style="width: 25%; display: flex; justify-content: center;">
+          <mat-slide-toggle [(ngModel)]="online" name="visio" style="margin-top: 20px;">
+            Visioconférence uniquement
+          </mat-slide-toggle>
+        </div>
+        <button mat-button (click)="reset()" style="width: 15%; height: 60px; margin-top: 4px;">
+          <mat-icon>autorenew</mat-icon>
+          Réinitialiser
+        </button>
+      </div>
+      <div style="display: flex;">
+        <mat-form-field appearance="outline" style="width: 100%; margin-right: 10px;">
+          <mat-label>Recherche</mat-label>
+          <input matInput name="email" [(ngModel)]="searchQuery" />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <button mat-flat-button (click)="search()" style="width: 30%; background-color: var(--info); color: white; height: 60px; margin-top: 4px; margin-left: 10px;">
+          <mat-icon>search</mat-icon>
+          Rechercher
+        </button>
+      </div>
     </div>
-  </div>
-
-  <div class="input-wrap">
-    <input type="text" placeholder="Rechercher un cours, un prof..." class="recherche">
-    <button mat-icon-button aria-label="">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div>
-  <div class="input-wrap">
-    <mat-select [(value)]="selected" placeholder="---selected---" class="search">
-      <mat-option value="Visioconference">Visioconference</mat-option>
-      <mat-option value="123">123</mat-option>
-    </mat-select>
-    <input type="text">
-  </div>
-
-  <b><div [ngClass]="{'num': num}" ><p>{{num}} cours trouves:</p></div></b>
-
-  <div class="card-list" style="width: 1024px;margin: 16px auto 0;display: flex;justify-content: space-between;">
-    <app-teacher-card></app-teacher-card>
-    <app-teacher-card></app-teacher-card>
-    <app-teacher-card></app-teacher-card>
-    <app-teacher-card></app-teacher-card>
-    <app-teacher-card></app-teacher-card>
-    <app-teacher-card></app-teacher-card>
-    <app-teacher-card></app-teacher-card>
+    <div>
+      <span style="font-weight: bold;">{{lessons.length}} cours trouvés</span>
+    </div>
+    <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center;">
+      <app-teacher-card *ngFor="let lesson of lessons" [lesson]="lesson" style="margin: 10px;"></app-teacher-card>
+    </div>
   </div>
 </div>

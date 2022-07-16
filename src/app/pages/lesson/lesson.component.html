@@ -5,8 +5,8 @@
         <div style="font-size: 50px; font-weight: 600;">{{ lesson.name }}</div>
         <div style="font-size: 25px; margin-top: 10px;">{{lesson.user.firstname + ' ' + lesson.user.lastname}}</div>
         <div style="font-size: 16px; margin-top: 10px; font-style: italic;">{{lesson.user.address}}</div>
-        <div style="font-size: 20px; margin-top: 10px; display: flex;" *ngIf="lesson.comments.length > 0">
-          <star-rating size="medium" [readOnly]="true" [rating]="calculateRating()" [showHalfStars]="true" style="margin-top: 2px;"></star-rating>
+        <div style="font-size: 20px; margin-top: 10px; display: flex;">
+          <star-rating size="medium" [readOnly]="true" [rating]="lesson.rating" [showHalfStars]="true" style="margin-top: 2px;"></star-rating>
           <span>&nbsp;({{lesson.comments.length}} avis)</span>
         </div>
       </div>
@@ -17,12 +17,12 @@
       </div>
     </div>
     <div style="margin-top: 25px; display: flex;">
-      <button mat-flat-button style="width: 25vw; background-color: var(--info); color: white; margin-right: 10px;" (click)="contact()" *ngIf="!(auth.user && auth.user.role !== 'élève') && lesson.available">
+      <button mat-flat-button style="width: 25vw; background-color: var(--info); color: white; margin-right: 10px;" (click)="contact()" *ngIf="!(auth.user && auth.user.role !== 'élève') && lesson.available && lesson.user.validated">
         Contacter ce professeur
       </button>
       <div style="display: flex; align-items:center;">
         <mat-icon style="transform: scale(1.5); margin-left: 40px;" matTooltip="Disponible en visioconférence" *ngIf="lesson.online">video_camera_front</mat-icon>
-        <span style="font-weight: bold; font-size: 22px; margin-left: 50px;">{{lesson.price}} € / h</span>
+        <span style="font-weight: bold; font-size: 22px; margin-left: 50px;">{{lesson.price | currency:'EUR':'symbol'}} / h</span>
       </div>
     </div>
     <div style="margin-top: 25px;">

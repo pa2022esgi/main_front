@@ -1,21 +1,22 @@
 .card {
-  display: inline-block;
   max-width: 300px;
+  min-width: 300px;
+  transition: all .2s ease-in-out; 
 }
 
-.mat-icon {
-  float: right;
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.03);
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-}
-
-.avatar{
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
+.avatar {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  object-fit: cover;
+  width: 100%;
+  max-width: 40px;
+  height: 40px;
 }
+
+
+
+

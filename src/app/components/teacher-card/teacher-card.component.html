@@ -1,12 +1,17 @@
-<mat-card class="card">
-  <mat-card-content>
-    <div>{{ 35 | currency:'EUR':'symbol' | uppercase}} / h
-    </div>
-    <mat-icon aria-hidden="false" aria-label="vision">videocam</mat-icon>
+<mat-card class="card" (click)="goToLesson()">
+  <mat-card-content style="display: flex; align-items: center;">
+    <img src="{{lesson.user.profile_img ? lesson.user.profile_img.url : '../../../assets/profile.png'}}" class="avatar">
+    <div style="width: 100%; font-size: 18px; font-weight: 500; margin-left: 10px;">{{ lesson.price | currency:'EUR':'symbol'}} / h</div>
+    <mat-icon matTooltip="Disponible en visioconférence" *ngIf="lesson.online">video_camera_front</mat-icon>
   </mat-card-content>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <div class="star">★★★★☆</div>
-  <mat-card-title>Cours de Math</mat-card-title>
-  <mat-card-subtitle>Titi TOTO</mat-card-subtitle>
-  <img class="avatar" src="../../../assets/profile.png" alt="">
+  <img mat-card-image style="background-image: url({{lesson.cover.url}}); height: 250px; background-position: center; background-size: cover;">
+  <div style="display: flex; justify-content: start; margin-left: -5px;">
+    <star-rating size="medium" [readOnly]="true" [rating]="lesson.rating" [showHalfStars]="true"></star-rating>
+  </div>
+  <mat-card-title style="margin-top: 4px;">{{lesson.name}}</mat-card-title>
+  <mat-card-subtitle>
+    <span style="font-size: 18px;">{{lesson.user.firstname + ' ' + lesson.user.lastname}}</span>
+    <br>
+    <span style="font-style: italic;">{{lesson.user.address}}</span>
+  </mat-card-subtitle>
 </mat-card>
