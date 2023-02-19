@@ -1,8 +1,8 @@
 <div style="display: flex; justify-content: space-around; margin-top: 10vh;">
-  <div>
-    <app-change-info *ngIf="user" [user]="user"></app-change-info>
+  <div *ngIf="user">
+    <app-change-info [user]="user"></app-change-info>
     <div style="margin-top: 50px;" *ngIf="user.role === 'professeur'">
-      <app-change-documents *ngIf="user" [documents]="user.documents" style="margin-top: 50px;"></app-change-documents>
+      <app-change-documents [documents]="user.documents" style="margin-top: 50px;"></app-change-documents>
     </div>
   </div>
   <div>
