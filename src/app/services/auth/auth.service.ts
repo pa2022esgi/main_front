@@ -3,8 +3,9 @@ import {HttpClient, HttpContext} from "@angular/common/http";
 import {User} from "../../models/user.model";
 import { Router } from '@angular/router';
 import { BYPASS_AUTH } from '../request.interceptor';
+import { environment } from 'src/environments/environment';
 
-const URL= "http://localhost:3000/auth/";
+const URL= environment.apiUrl + "/auth/";
 const httpOptions = {
   context: new HttpContext().set(BYPASS_AUTH, true)
 };

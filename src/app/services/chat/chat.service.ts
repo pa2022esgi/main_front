@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { io } from 'socket.io-client';
 import { AuthService } from '../auth/auth.service';
+import { environment } from 'src/environments/environment';
 
-const URL= "http://localhost:3000";
+const URL= environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
