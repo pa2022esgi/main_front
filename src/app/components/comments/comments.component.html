@@ -1,5 +1,5 @@
 <div>
-  <div style="font-size: 25px; font-weight: 500">Avis et commentaires</div>
+  <div style="font-size: 25px; font-weight: 500" *ngIf="(auth.user && auth.user.role === 'élève' && lesson.canComment) || lesson.comments.length > 0">Avis et commentaires</div>
   <div style="margin-top: 25px;" *ngIf="auth.user && auth.user.role === 'élève' && lesson.canComment">
     <div style="display: flex;">
       <div style="width: 50%">

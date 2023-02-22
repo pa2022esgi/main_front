@@ -10,7 +10,7 @@
             <span style="width: 100%;">{{document.name}}</span>
           </div>
           <div style="display: flex; align-items: center;">
-            <button mat-icon-button (click)="openDocument(document.url)">
+            <button mat-icon-button (click)="openDocument(document._id)">
               <mat-icon>visibility</mat-icon>
             </button>
             <button mat-icon-button (click)="deleteDocument(document._id)" style="color: var(--error);">

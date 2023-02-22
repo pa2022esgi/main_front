@@ -30,6 +30,10 @@ export class DocumentService {
     return this.http.post(URL + '/users/' + this.auth.user?.id + '/documents', formData);
   }
 
+  getUserDocument(user_id: string , file_id: string) {
+    return this.http.get(URL + '/users/' + user_id + '/documents/' + file_id);
+  }
+
   deleteFile(id: string) {
     return this.http.delete(URL + '/users/' + this.auth.user?.id + '/documents/' + id);
   }

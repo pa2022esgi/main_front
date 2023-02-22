@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { DocumentService } from 'src/app/services/document/document.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { DocumentService } from 'src/app/services/document/document.service';
 export class ChangeDocumentsComponent implements OnInit {
   @Input() documents: Array<any> = [];
 
-  constructor(private service: DocumentService) { }
+  constructor(private service: DocumentService, private auth: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +33,11 @@ export class ChangeDocumentsComponent implements OnInit {
     });
   }
 
-  openDocument(url: string) {
-    window.open(url, '_blank');
+  openDocument(file_id: string) {
+    this.service.getUserDocument(this.auth.user!.id, file_id).subscribe({
+      next: (res: any) => {
+        window.open(res, '_blank');
+      },
+    });
   }
 }
