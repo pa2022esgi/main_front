@@ -28,8 +28,8 @@ export class SlotService {
     return this.http.delete(URL + '/slots/' + slotId);
   }
 
-  paySlot(slotId: string) {
-    return this.http.put(URL + '/slots/' + slotId + '/pay', {});
+  paySlot(slotId: string, token: string) {
+    return this.http.put(URL + '/slots/' + slotId + '/pay', { token });
   }
 
   getAllSlots(groupBy:boolean = false) {
